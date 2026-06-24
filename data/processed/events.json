@@ -23,6 +23,78 @@
       "event_date": "2025-12-01",
       "event_type": "leadership_change",
       "description": "Apple announced John Giannandrea will retire in spring 2026. Amar Subramanya named VP of AI, reporting to Craig Federighi, leading Apple Foundation Models, ML research, and AI Safety."
+    },
+    {
+      "event_id": "EVT-NVDA-2023-export-controls",
+      "event_date": "2023-10-17",
+      "event_type": "regulatory_filing",
+      "description": "US Commerce Department issued updated export controls requiring licenses for NVIDIA A100, H100, and L40S chips exported to China and over 40 other countries."
+    },
+    {
+      "event_id": "EVT-AMD-2023-mi300x",
+      "event_date": "2023-12-06",
+      "event_type": "product_launch",
+      "description": "AMD launched the Instinct MI300X AI accelerator, claiming superior large-language-model inference performance versus NVIDIA H100 at lower memory bandwidth cost."
+    },
+    {
+      "event_id": "EVT-GOOGL-2024-antitrust",
+      "event_date": "2024-08-05",
+      "event_type": "lawsuit",
+      "description": "US District Judge Amit Mehta ruled Google violated US antitrust laws, maintaining an illegal monopoly in the search and search text advertising markets."
+    },
+    {
+      "event_id": "EVT-META-2024-llama3",
+      "event_date": "2024-04-18",
+      "event_type": "product_launch",
+      "description": "Meta released Llama 3 (8B and 70B parameter models) as open-source weights, intensifying competition with closed-model AI providers including OpenAI and Anthropic."
+    },
+    {
+      "event_id": "EVT-AMZN-2024-anthropic",
+      "event_date": "2024-03-27",
+      "event_type": "merger",
+      "description": "Amazon completed a $4 billion investment in Anthropic and named AWS as Anthropic's primary cloud and training partner for Claude models."
+    },
+    {
+      "event_id": "EVT-MSFT-2023-activision",
+      "event_date": "2023-10-13",
+      "event_type": "merger",
+      "description": "Microsoft completed its $69 billion acquisition of Activision Blizzard following FTC litigation and UK CMA approval, becoming the third-largest gaming company by revenue."
+    },
+    {
+      "event_id": "EVT-PLTR-2023-gaap-profit",
+      "event_date": "2023-11-07",
+      "event_type": "financial",
+      "description": "Palantir reported its first full quarter of GAAP profitability in Q3 2023, with US commercial revenue growing 33% year-over-year, driven by its AI Platform (AIP)."
+    },
+    {
+      "event_id": "EVT-SNOW-2024-ceo",
+      "event_date": "2024-02-28",
+      "event_type": "leadership_change",
+      "description": "Snowflake CEO Frank Slootman announced retirement; Sridhar Ramaswamy, former Google VP Advertising, appointed as incoming CEO effective immediately."
+    },
+    {
+      "event_id": "EVT-CRM-2024-revenue-miss",
+      "event_date": "2024-05-29",
+      "event_type": "financial",
+      "description": "Salesforce reported Q1 FY2025 revenue of $9.13 billion with weaker-than-expected forward guidance, citing elongated enterprise sales cycles and customer budget caution around AI tooling."
+    },
+    {
+      "event_id": "EVT-AVGO-2023-vmware",
+      "event_date": "2023-11-22",
+      "event_type": "merger",
+      "description": "Broadcom completed its $69 billion acquisition of VMware after clearing EU and Chinese regulatory approvals, immediately announcing plans to refocus VMware on private cloud."
+    },
+    {
+      "event_id": "EVT-ORCL-2023-gpu-cluster",
+      "event_date": "2023-09-19",
+      "event_type": "financial",
+      "description": "Oracle announced deployment of NVIDIA H100 GPU supercomputer clusters on Oracle Cloud Infrastructure (OCI), targeting AI training workloads and competing directly with AWS, Azure, and GCP."
+    },
+    {
+      "event_id": "EVT-INTC-2024-foundry-msft",
+      "event_date": "2024-02-21",
+      "event_type": "financial",
+      "description": "Intel and Microsoft announced a multi-year agreement for Intel Foundry to manufacture custom chips for Microsoft on the Intel 18A process node, Intel's most advanced process."
     }
   ]
 }

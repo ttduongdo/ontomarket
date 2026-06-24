@@ -84,6 +84,21 @@
       "ticker": "AVGO",
       "name": "Broadcom Inc.",
       "founded_date": null
+    },
+    {
+      "ticker": "TSM",
+      "name": "Taiwan Semiconductor Manufacturing Company",
+      "founded_date": "1987-02-21"
+    },
+    {
+      "ticker": "QCOM",
+      "name": "Qualcomm",
+      "founded_date": "1985-07-01"
+    },
+    {
+      "ticker": "WDAY",
+      "name": "Workday",
+      "founded_date": "2005-01-01"
     }
   ]
 }

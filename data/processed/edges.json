@@ -43,6 +43,34 @@
     {
       "company_a": "ORCL",
       "company_b": "MSFT"
+    },
+    {
+      "company_a": "CRM",
+      "company_b": "WDAY"
+    },
+    {
+      "company_a": "NOW",
+      "company_b": "WDAY"
+    },
+    {
+      "company_a": "ORCL",
+      "company_b": "WDAY"
+    },
+    {
+      "company_a": "INTC",
+      "company_b": "TSM"
+    },
+    {
+      "company_a": "NVDA",
+      "company_b": "QCOM"
+    },
+    {
+      "company_a": "INTC",
+      "company_b": "QCOM"
+    },
+    {
+      "company_a": "MDB",
+      "company_b": "ESTC"
     }
   ],
   "supplies_to": [
@@ -80,6 +108,41 @@
       "supplier": "INTC",
       "customer": "MSFT",
       "category": "Server CPUs (Xeon Scalable for Azure general compute and confidential computing)"
+    },
+    {
+      "supplier": "TSM",
+      "customer": "NVDA",
+      "category": "Chip fabrication (manufactures H100, B100, and Blackwell GPUs on TSMC's advanced process nodes)"
+    },
+    {
+      "supplier": "TSM",
+      "customer": "AMD",
+      "category": "Chip fabrication (manufactures EPYC CPUs and Instinct MI300X on TSMC 5nm and 3nm)"
+    },
+    {
+      "supplier": "TSM",
+      "customer": "AAPL",
+      "category": "Chip fabrication (manufactures Apple A-series and M-series SoCs on TSMC 3nm and 4nm)"
+    },
+    {
+      "supplier": "TSM",
+      "customer": "AVGO",
+      "category": "Chip fabrication (manufactures Broadcom custom ASICs and networking silicon on TSMC process nodes)"
+    },
+    {
+      "supplier": "QCOM",
+      "customer": "AAPL",
+      "category": "Cellular modems (Snapdragon X65 and X70 modems for iPhone; Apple developing in-house modem as replacement)"
+    },
+    {
+      "supplier": "NVDA",
+      "customer": "ORCL",
+      "category": "AI accelerator GPUs (H100 clusters deployed across Oracle Cloud Infrastructure for generative AI workloads)"
+    },
+    {
+      "supplier": "NOW",
+      "customer": "NVDA",
+      "category": "IT service management platform (ServiceNow Now Platform used for NVIDIA internal IT operations)"
     }
   ],
   "executive_of": [
@@ -187,6 +250,62 @@
       "title": "SVP and Chief Marketing Officer",
       "start_date": "2026-02-09",
       "end_date": null
+    },
+    {
+      "person_id": "frank-slootman",
+      "company_ticker": "SNOW",
+      "title": "CEO",
+      "start_date": "2019-04-26",
+      "end_date": "2024-02-28"
+    },
+    {
+      "person_id": "sridhar-ramaswamy",
+      "company_ticker": "GOOGL",
+      "title": "SVP Advertising and Commerce",
+      "start_date": "2003-01-01",
+      "end_date": "2018-01-01"
+    },
+    {
+      "person_id": "sridhar-ramaswamy",
+      "company_ticker": "SNOW",
+      "title": "CEO",
+      "start_date": "2024-02-28",
+      "end_date": null
+    },
+    {
+      "person_id": "lip-bu-tan",
+      "company_ticker": "INTC",
+      "title": "CEO",
+      "start_date": "2025-03-18",
+      "end_date": null
+    },
+    {
+      "person_id": "alex-karp",
+      "company_ticker": "PLTR",
+      "title": "CEO and Co-founder",
+      "start_date": "2003-01-01",
+      "end_date": null
+    },
+    {
+      "person_id": "safra-catz",
+      "company_ticker": "ORCL",
+      "title": "CEO",
+      "start_date": "2014-09-22",
+      "end_date": null
+    },
+    {
+      "person_id": "marc-benioff",
+      "company_ticker": "CRM",
+      "title": "CEO and Co-founder",
+      "start_date": "1999-03-08",
+      "end_date": null
+    },
+    {
+      "person_id": "bill-mcdermott",
+      "company_ticker": "NOW",
+      "title": "CEO",
+      "start_date": "2019-11-01",
+      "end_date": null
     }
   ],
   "affected_by": [
@@ -209,6 +328,81 @@
       "company_ticker": "AAPL",
       "event_id": "EVT-AAPL-2025-ai-chief",
       "impact": "negative"
+    },
+    {
+      "company_ticker": "NVDA",
+      "event_id": "EVT-NVDA-2023-export-controls",
+      "impact": "negative"
+    },
+    {
+      "company_ticker": "AMD",
+      "event_id": "EVT-NVDA-2023-export-controls",
+      "impact": "negative"
+    },
+    {
+      "company_ticker": "AMD",
+      "event_id": "EVT-AMD-2023-mi300x",
+      "impact": "positive"
+    },
+    {
+      "company_ticker": "GOOGL",
+      "event_id": "EVT-GOOGL-2024-antitrust",
+      "impact": "negative"
+    },
+    {
+      "company_ticker": "META",
+      "event_id": "EVT-META-2024-llama3",
+      "impact": "positive"
+    },
+    {
+      "company_ticker": "AMZN",
+      "event_id": "EVT-AMZN-2024-anthropic",
+      "impact": "positive"
+    },
+    {
+      "company_ticker": "MSFT",
+      "event_id": "EVT-MSFT-2023-activision",
+      "impact": "positive"
+    },
+    {
+      "company_ticker": "PLTR",
+      "event_id": "EVT-PLTR-2023-gaap-profit",
+      "impact": "positive"
+    },
+    {
+      "company_ticker": "SNOW",
+      "event_id": "EVT-SNOW-2024-ceo",
+      "impact": "neutral"
+    },
+    {
+      "company_ticker": "CRM",
+      "event_id": "EVT-CRM-2024-revenue-miss",
+      "impact": "negative"
+    },
+    {
+      "company_ticker": "AVGO",
+      "event_id": "EVT-AVGO-2023-vmware",
+      "impact": "positive"
+    },
+    {
+      "company_ticker": "ORCL",
+      "event_id": "EVT-ORCL-2023-gpu-cluster",
+      "impact": "positive"
+    },
+    {
+      "company_ticker": "NVDA",
+      "event_id": "EVT-ORCL-2023-gpu-cluster",
+      "impact": "positive"
+    },
+    {
+      "company_ticker": "INTC",
+      "event_id": "EVT-INTC-2024-foundry-msft",
+      "impact": "positive"
+    },
+    {
+      "company_ticker": "MSFT",
+      "event_id": "EVT-INTC-2024-foundry-msft",
+      "impact": "positive"
     }
   ]
 }
