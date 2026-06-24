@@ -1,0 +1,1070 @@
+{
+  "_meta": {
+    "note": "Hand-written text snippets for the ChromaDB vector baseline. One or two sentences each, grounded in verified facts from curated_edges.json. Deliberately written as isolated facts so vector search finds relevant documents but cannot compose the multi-hop relational chain.",
+    "count": 91
+  },
+  "snippets": [
+    {
+      "id": "snip-001",
+      "text": "Intel announced a major restructuring plan in August 2024, cutting approximately 15,000 jobs representing about 15% of its global workforce.",
+      "tags": [
+        "Intel",
+        "restructuring",
+        "layoffs",
+        "event"
+      ]
+    },
+    {
+      "id": "snip-002",
+      "text": "Intel suspended its quarterly dividend in August 2024 as part of a cost-reduction plan aimed at saving $10 billion by 2025.",
+      "tags": [
+        "Intel",
+        "restructuring",
+        "dividend",
+        "event"
+      ]
+    },
+    {
+      "id": "snip-003",
+      "text": "Intel's August 2024 restructuring included significant reductions to its capital expenditure plans, with the company scaling back factory investments.",
+      "tags": [
+        "Intel",
+        "restructuring",
+        "capex",
+        "event"
+      ]
+    },
+    {
+      "id": "snip-004",
+      "text": "Intel CEO Pat Gelsinger cited intensifying competition from NVIDIA and AMD in the AI accelerator market when announcing the August 2024 restructuring.",
+      "tags": [
+        "Intel",
+        "NVIDIA",
+        "AMD",
+        "competition",
+        "restructuring"
+      ]
+    },
+    {
+      "id": "snip-005",
+      "text": "Pat Gelsinger retired as Intel's chief executive officer in December 2024 after the board determined a leadership change was needed.",
+      "tags": [
+        "Intel",
+        "Pat Gelsinger",
+        "CEO",
+        "leadership change",
+        "event"
+      ]
+    },
+    {
+      "id": "snip-006",
+      "text": "Intel named David Zinsner and Michelle Johnston Holthaus as interim co-CEOs following Pat Gelsinger's departure in December 2024.",
+      "tags": [
+        "Intel",
+        "leadership change",
+        "CEO",
+        "event"
+      ]
+    },
+    {
+      "id": "snip-007",
+      "text": "Pat Gelsinger led Intel's IDM 2.0 turnaround strategy from February 2021 until his sudden departure in December 2024.",
+      "tags": [
+        "Intel",
+        "Pat Gelsinger",
+        "CEO",
+        "executive"
+      ]
+    },
+    {
+      "id": "snip-008",
+      "text": "Microsoft announced a multi-billion dollar investment in OpenAI in January 2023, making Azure the exclusive cloud provider for OpenAI's workloads.",
+      "tags": [
+        "Microsoft",
+        "OpenAI",
+        "investment",
+        "Azure",
+        "event"
+      ]
+    },
+    {
+      "id": "snip-009",
+      "text": "Microsoft's January 2023 OpenAI investment, reported at $10 billion, marked the third phase of the companies' partnership following earlier deals in 2019 and 2021.",
+      "tags": [
+        "Microsoft",
+        "OpenAI",
+        "investment",
+        "partnership",
+        "event"
+      ]
+    },
+    {
+      "id": "snip-010",
+      "text": "Following Microsoft's major OpenAI investment in early 2023, Azure AI services saw accelerated enterprise adoption, competing directly with Google Cloud's AI offerings.",
+      "tags": [
+        "Microsoft",
+        "Azure",
+        "OpenAI",
+        "Google",
+        "competition"
+      ]
+    },
+    {
+      "id": "snip-011",
+      "text": "Apple announced in December 2025 that John Giannandrea would retire in spring 2026, with Amar Subramanya named as the new VP of Artificial Intelligence.",
+      "tags": [
+        "Apple",
+        "AI",
+        "leadership change",
+        "event",
+        "Amar Subramanya"
+      ]
+    },
+    {
+      "id": "snip-012",
+      "text": "Apple's December 2025 AI leadership transition came amid pressure to deliver on Apple Intelligence features and modernize the Siri assistant.",
+      "tags": [
+        "Apple",
+        "AI",
+        "leadership change",
+        "event",
+        "Siri"
+      ]
+    },
+    {
+      "id": "snip-013",
+      "text": "John Giannandrea joined Apple from Google in 2018 and led Apple's machine learning and AI strategy for seven years before retiring.",
+      "tags": [
+        "Apple",
+        "John Giannandrea",
+        "AI",
+        "executive",
+        "Google"
+      ]
+    },
+    {
+      "id": "snip-014",
+      "text": "Amar Subramanya spent 16 years at Google, most recently leading engineering for the Gemini AI assistant before departing in July 2025.",
+      "tags": [
+        "Amar Subramanya",
+        "Google",
+        "Gemini",
+        "AI",
+        "executive"
+      ]
+    },
+    {
+      "id": "snip-015",
+      "text": "Amar Subramanya joined Microsoft in July 2025 as Corporate VP of AI, working on foundation models powering Microsoft Copilot.",
+      "tags": [
+        "Amar Subramanya",
+        "Microsoft",
+        "AI",
+        "Copilot",
+        "executive"
+      ]
+    },
+    {
+      "id": "snip-016",
+      "text": "Just four months after joining Microsoft, Amar Subramanya departed to become VP of Artificial Intelligence at Apple in December 2025.",
+      "tags": [
+        "Amar Subramanya",
+        "Apple",
+        "Microsoft",
+        "AI",
+        "executive move"
+      ]
+    },
+    {
+      "id": "snip-017",
+      "text": "Microsoft and Google compete directly in cloud computing and AI platforms, with Azure Copilot and Google Gemini as their flagship AI products.",
+      "tags": [
+        "Microsoft",
+        "Google",
+        "competition",
+        "AI",
+        "cloud"
+      ]
+    },
+    {
+      "id": "snip-018",
+      "text": "Ian Yang served as President of Intel China from approximately 2009 to 2021, where he was known for aggressive campaigns against AMD.",
+      "tags": [
+        "Ian Yang",
+        "Intel",
+        "executive",
+        "China"
+      ]
+    },
+    {
+      "id": "snip-019",
+      "text": "Ian Yang, formerly known as the 'AMD Killer' for his Intel China campaigns, joined AMD as Corporate VP in July 2025.",
+      "tags": [
+        "Ian Yang",
+        "AMD",
+        "Intel",
+        "executive move"
+      ]
+    },
+    {
+      "id": "snip-020",
+      "text": "AMD and Intel compete in the x86 CPU market and increasingly in AI accelerators, with AMD's Instinct MI300X targeting Intel's Gaudi chips.",
+      "tags": [
+        "AMD",
+        "Intel",
+        "competition",
+        "AI accelerator",
+        "GPU"
+      ]
+    },
+    {
+      "id": "snip-021",
+      "text": "Ariel Kelman served as Chief Marketing Officer at Salesforce before AMD announced his hire as SVP and CMO in February 2026.",
+      "tags": [
+        "Ariel Kelman",
+        "AMD",
+        "Salesforce",
+        "CMO",
+        "executive move"
+      ]
+    },
+    {
+      "id": "snip-022",
+      "text": "Ariel Kelman brought cloud marketing experience from previous senior roles at AWS and Oracle before joining Salesforce and then AMD.",
+      "tags": [
+        "Ariel Kelman",
+        "AMD",
+        "AWS",
+        "Oracle",
+        "executive"
+      ]
+    },
+    {
+      "id": "snip-023",
+      "text": "NVIDIA supplies H100 and H200 GPU accelerators to Microsoft Azure, which uses them to power AI workloads including confidential computing virtual machines.",
+      "tags": [
+        "NVIDIA",
+        "Microsoft",
+        "Azure",
+        "GPU",
+        "supply"
+      ]
+    },
+    {
+      "id": "snip-024",
+      "text": "AWS launched EC2 P5 instances powered by NVIDIA H100 GPUs in 2023, enabling clusters of up to 20,000 GPUs for large-scale AI training.",
+      "tags": [
+        "NVIDIA",
+        "Amazon",
+        "AWS",
+        "H100",
+        "GPU",
+        "supply"
+      ]
+    },
+    {
+      "id": "snip-025",
+      "text": "Google Cloud's A3 supercomputer VMs are powered by NVIDIA H100 GPUs, scaling to 26,000 GPUs per cluster for generative AI workloads.",
+      "tags": [
+        "NVIDIA",
+        "Google",
+        "GCP",
+        "H100",
+        "GPU",
+        "supply"
+      ]
+    },
+    {
+      "id": "snip-026",
+      "text": "Meta has deployed over 100,000 NVIDIA H100 GPUs in its AI infrastructure to train the Llama 4 large language model.",
+      "tags": [
+        "NVIDIA",
+        "Meta",
+        "H100",
+        "GPU",
+        "supply",
+        "Llama"
+      ]
+    },
+    {
+      "id": "snip-027",
+      "text": "Broadcom is Google's primary ASIC co-design partner for the Tensor Processing Unit program, designing the custom silicon for Google's TPUs.",
+      "tags": [
+        "Broadcom",
+        "Google",
+        "TPU",
+        "ASIC",
+        "supply"
+      ]
+    },
+    {
+      "id": "snip-028",
+      "text": "Meta committed to a multi-gigawatt MTIA chip partnership with Broadcom through 2029, with Broadcom supplying custom AI accelerator ASICs.",
+      "tags": [
+        "Broadcom",
+        "Meta",
+        "MTIA",
+        "ASIC",
+        "supply"
+      ]
+    },
+    {
+      "id": "snip-029",
+      "text": "Intel Xeon Scalable processors power Azure's general compute and confidential computing infrastructure, representing a key supply relationship between Intel and Microsoft.",
+      "tags": [
+        "Intel",
+        "Microsoft",
+        "Azure",
+        "Xeon",
+        "CPU",
+        "supply"
+      ]
+    },
+    {
+      "id": "snip-030",
+      "text": "NVIDIA and AMD compete directly in the GPU and AI accelerator market, with AMD's MI300X series positioning as a lower-cost alternative to NVIDIA's H100.",
+      "tags": [
+        "NVIDIA",
+        "AMD",
+        "competition",
+        "GPU",
+        "AI accelerator"
+      ]
+    },
+    {
+      "id": "snip-031",
+      "text": "NVIDIA and Intel compete in the data center AI accelerator market, with Intel's Gaudi series challenging NVIDIA's dominant H-series GPU lineup.",
+      "tags": [
+        "NVIDIA",
+        "Intel",
+        "competition",
+        "AI accelerator",
+        "Gaudi"
+      ]
+    },
+    {
+      "id": "snip-032",
+      "text": "Microsoft Azure and Amazon Web Services are the two largest cloud platforms, competing across compute, storage, AI services, and developer tooling.",
+      "tags": [
+        "Microsoft",
+        "Amazon",
+        "competition",
+        "cloud",
+        "Azure",
+        "AWS"
+      ]
+    },
+    {
+      "id": "snip-033",
+      "text": "Google Cloud and Amazon Web Services compete for enterprise cloud customers, with Google differentiating on AI and data analytics capabilities.",
+      "tags": [
+        "Google",
+        "Amazon",
+        "competition",
+        "cloud",
+        "GCP",
+        "AWS"
+      ]
+    },
+    {
+      "id": "snip-034",
+      "text": "Google and Apple compete in consumer AI assistants and mobile software, with Google Gemini and Apple Intelligence as their respective AI platforms.",
+      "tags": [
+        "Google",
+        "Apple",
+        "competition",
+        "AI",
+        "mobile"
+      ]
+    },
+    {
+      "id": "snip-035",
+      "text": "Microsoft and Apple compete in consumer AI productivity software, with Copilot integrated into Windows and Apple Intelligence integrated into iOS and macOS.",
+      "tags": [
+        "Microsoft",
+        "Apple",
+        "competition",
+        "AI",
+        "productivity"
+      ]
+    },
+    {
+      "id": "snip-036",
+      "text": "Oracle and Microsoft compete in enterprise database and cloud infrastructure, with Oracle Cloud Infrastructure growing as an alternative to Azure.",
+      "tags": [
+        "Oracle",
+        "Microsoft",
+        "competition",
+        "cloud",
+        "database"
+      ]
+    },
+    {
+      "id": "snip-037",
+      "text": "Salesforce and ServiceNow compete in enterprise SaaS and workflow automation, both expanding into AI-powered CRM and IT service management.",
+      "tags": [
+        "Salesforce",
+        "ServiceNow",
+        "competition",
+        "SaaS",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "snip-038",
+      "text": "MongoDB and Snowflake compete in the data platform market, with MongoDB serving operational workloads and Snowflake focused on analytical data cloud.",
+      "tags": [
+        "MongoDB",
+        "Snowflake",
+        "competition",
+        "data platform"
+      ]
+    },
+    {
+      "id": "snip-039",
+      "text": "NVIDIA was founded in 1993 by Jensen Huang and is the dominant supplier of GPUs for AI training, commanding over 80% of the AI accelerator market.",
+      "tags": [
+        "NVIDIA",
+        "Jensen Huang",
+        "founder",
+        "GPU",
+        "AI"
+      ]
+    },
+    {
+      "id": "snip-040",
+      "text": "Jensen Huang co-founded NVIDIA in 1993 and has served as CEO continuously since, overseeing the company's pivot from gaming GPUs to AI infrastructure.",
+      "tags": [
+        "NVIDIA",
+        "Jensen Huang",
+        "CEO",
+        "founder",
+        "executive"
+      ]
+    },
+    {
+      "id": "snip-041",
+      "text": "Lisa Su became CEO of AMD in October 2014 and led its turnaround, growing revenue from under $4 billion to over $20 billion by prioritizing data center chips.",
+      "tags": [
+        "AMD",
+        "Lisa Su",
+        "CEO",
+        "executive"
+      ]
+    },
+    {
+      "id": "snip-042",
+      "text": "Satya Nadella became Microsoft CEO in February 2014 and shifted the company's strategy toward cloud computing and AI, culminating in the OpenAI partnership.",
+      "tags": [
+        "Microsoft",
+        "Satya Nadella",
+        "CEO",
+        "executive",
+        "cloud",
+        "AI"
+      ]
+    },
+    {
+      "id": "snip-043",
+      "text": "Sundar Pichai became CEO of Alphabet in August 2015 and has led Google's expansion into cloud computing and AI, including the Gemini model family.",
+      "tags": [
+        "Google",
+        "Alphabet",
+        "Sundar Pichai",
+        "CEO",
+        "executive",
+        "AI"
+      ]
+    },
+    {
+      "id": "snip-044",
+      "text": "Andy Jassy succeeded Jeff Bezos as Amazon CEO in July 2021 and has focused on AWS profitability and expanding Amazon's AI and advertising businesses.",
+      "tags": [
+        "Amazon",
+        "Andy Jassy",
+        "CEO",
+        "executive",
+        "AWS"
+      ]
+    },
+    {
+      "id": "snip-045",
+      "text": "The US Commerce Department issued updated export controls in October 2023 requiring licenses for NVIDIA's A100 and H100 AI chips exported to China, the Middle East, and over 40 other countries.",
+      "tags": [
+        "NVIDIA",
+        "export controls",
+        "regulatory",
+        "China",
+        "AI",
+        "event"
+      ]
+    },
+    {
+      "id": "snip-046",
+      "text": "NVIDIA's H100 export restrictions forced Microsoft, Amazon, and Google to seek alternative AI chip suppliers or reroute GPU cluster deployments outside restricted regions.",
+      "tags": [
+        "NVIDIA",
+        "Microsoft",
+        "Amazon",
+        "Google",
+        "export controls",
+        "supply chain",
+        "AI"
+      ]
+    },
+    {
+      "id": "snip-047",
+      "text": "AMD launched its Instinct MI300X AI accelerator in December 2023, claiming better memory bandwidth and lower inference cost per token than NVIDIA's H100.",
+      "tags": [
+        "AMD",
+        "MI300X",
+        "AI accelerator",
+        "product launch",
+        "NVIDIA",
+        "competition"
+      ]
+    },
+    {
+      "id": "snip-048",
+      "text": "Microsoft adopted AMD's MI300X GPUs in Azure to diversify away from sole dependence on NVIDIA for AI inference workloads.",
+      "tags": [
+        "AMD",
+        "Microsoft",
+        "Azure",
+        "MI300X",
+        "supply",
+        "AI",
+        "competition"
+      ]
+    },
+    {
+      "id": "snip-049",
+      "text": "Meta announced it would test AMD MI300X chips for its AI training infrastructure, reducing concentration risk from NVIDIA's dominant H100 supply position.",
+      "tags": [
+        "Meta",
+        "AMD",
+        "MI300X",
+        "AI",
+        "supply",
+        "competition"
+      ]
+    },
+    {
+      "id": "snip-050",
+      "text": "A US federal judge ruled in August 2024 that Google violated antitrust law by paying billions of dollars annually to Apple and other device makers to be the default search engine.",
+      "tags": [
+        "Google",
+        "antitrust",
+        "DOJ",
+        "lawsuit",
+        "legal",
+        "Apple",
+        "event"
+      ]
+    },
+    {
+      "id": "snip-051",
+      "text": "The DOJ antitrust ruling against Google threatened its estimated $20 billion per year payment to Apple to maintain default search engine status on iOS and Safari.",
+      "tags": [
+        "Google",
+        "Apple",
+        "antitrust",
+        "search",
+        "legal",
+        "competition"
+      ]
+    },
+    {
+      "id": "snip-052",
+      "text": "Meta released Llama 3 as open-source in April 2024, with 8B and 70B parameter models available to developers for free, intensifying competition with OpenAI's GPT-4 and Anthropic's Claude.",
+      "tags": [
+        "Meta",
+        "Llama 3",
+        "open source",
+        "AI",
+        "product launch",
+        "event"
+      ]
+    },
+    {
+      "id": "snip-053",
+      "text": "Meta's 350,000-H100 GPU cluster, one of the largest AI training installations in the world, was deployed to train Llama 3 models, built with NVIDIA hardware and InfiniBand networking.",
+      "tags": [
+        "Meta",
+        "NVIDIA",
+        "H100",
+        "GPU",
+        "AI training",
+        "supply",
+        "infrastructure"
+      ]
+    },
+    {
+      "id": "snip-054",
+      "text": "Amazon completed a $4 billion investment in Anthropic in March 2024, naming AWS as Anthropic's primary cloud and training partner for Claude AI models.",
+      "tags": [
+        "Amazon",
+        "AWS",
+        "Anthropic",
+        "investment",
+        "AI",
+        "cloud",
+        "event"
+      ]
+    },
+    {
+      "id": "snip-055",
+      "text": "AWS and Microsoft Azure both signed major AI model partnerships \u2014 AWS with Anthropic and Azure with OpenAI \u2014 positioning them against Google Cloud's Gemini-native platform.",
+      "tags": [
+        "Amazon",
+        "Microsoft",
+        "Google",
+        "AI",
+        "cloud",
+        "competition",
+        "partnership"
+      ]
+    },
+    {
+      "id": "snip-056",
+      "text": "Microsoft completed its $69 billion acquisition of Activision Blizzard in October 2023 after the FTC failed to block the deal, making Microsoft the third-largest gaming company globally.",
+      "tags": [
+        "Microsoft",
+        "Activision",
+        "merger",
+        "acquisition",
+        "FTC",
+        "gaming",
+        "event"
+      ]
+    },
+    {
+      "id": "snip-057",
+      "text": "Palantir reported its first full quarter of GAAP profitability in Q3 2023, driven by 33% growth in US commercial revenue from its AI Platform (AIP).",
+      "tags": [
+        "Palantir",
+        "GAAP",
+        "profitability",
+        "financial",
+        "AI",
+        "AIP",
+        "event"
+      ]
+    },
+    {
+      "id": "snip-058",
+      "text": "Palantir's AIP (AI Platform) integrates large language models with enterprise data to enable operational AI agents, competing with Salesforce's Agentforce and ServiceNow's Now Assist.",
+      "tags": [
+        "Palantir",
+        "Salesforce",
+        "ServiceNow",
+        "AI",
+        "enterprise",
+        "competition"
+      ]
+    },
+    {
+      "id": "snip-059",
+      "text": "Snowflake CEO Frank Slootman announced his retirement in February 2024. Sridhar Ramaswamy, who previously led Google's advertising business, was appointed as incoming CEO.",
+      "tags": [
+        "Snowflake",
+        "Frank Slootman",
+        "Sridhar Ramaswamy",
+        "CEO",
+        "leadership change",
+        "event"
+      ]
+    },
+    {
+      "id": "snip-060",
+      "text": "Sridhar Ramaswamy, the new Snowflake CEO, previously ran Google's multi-billion-dollar advertising business for over a decade, bringing cloud-scale go-to-market expertise to Snowflake.",
+      "tags": [
+        "Snowflake",
+        "Sridhar Ramaswamy",
+        "Google",
+        "executive",
+        "leadership"
+      ]
+    },
+    {
+      "id": "snip-061",
+      "text": "Salesforce reported weaker-than-expected guidance in May 2024, with CEO Marc Benioff citing elongated enterprise sales cycles as customers paused software spending to evaluate AI tool investments.",
+      "tags": [
+        "Salesforce",
+        "financial",
+        "revenue",
+        "AI",
+        "enterprise",
+        "event"
+      ]
+    },
+    {
+      "id": "snip-062",
+      "text": "ServiceNow raised its revenue outlook the same week Salesforce missed guidance, with CEO Bill McDermott citing strong demand for its AI-powered Now Assist workflow automation.",
+      "tags": [
+        "ServiceNow",
+        "Salesforce",
+        "AI",
+        "financial",
+        "competition",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "snip-063",
+      "text": "Broadcom completed its $69 billion acquisition of VMware in November 2023 following EU and Chinese regulatory approvals, immediately discontinuing most VMware perpetual software licenses.",
+      "tags": [
+        "Broadcom",
+        "VMware",
+        "merger",
+        "acquisition",
+        "event",
+        "cloud"
+      ]
+    },
+    {
+      "id": "snip-064",
+      "text": "Oracle announced deployment of NVIDIA H100 GPU supercomputer clusters on Oracle Cloud Infrastructure in September 2023, competing with AWS, Azure, and Google Cloud for AI training customers.",
+      "tags": [
+        "Oracle",
+        "NVIDIA",
+        "H100",
+        "GPU",
+        "cloud",
+        "AI",
+        "supply",
+        "event"
+      ]
+    },
+    {
+      "id": "snip-065",
+      "text": "Intel and Microsoft announced a multi-year agreement in February 2024 for Intel Foundry to manufacture custom chips for Microsoft on Intel's 18A process node.",
+      "tags": [
+        "Intel",
+        "Microsoft",
+        "foundry",
+        "manufacturing",
+        "supply",
+        "event"
+      ]
+    },
+    {
+      "id": "snip-066",
+      "text": "Intel's 18A process node is designed to compete with TSMC's 2nm process \u2014 Intel Foundry's most advanced manufacturing technology, targeting external hyperscaler customers.",
+      "tags": [
+        "Intel",
+        "TSMC",
+        "foundry",
+        "manufacturing",
+        "competition",
+        "semiconductor"
+      ]
+    },
+    {
+      "id": "snip-067",
+      "text": "TSMC manufactures NVIDIA's H100 and Blackwell GPUs, AMD's EPYC CPUs and MI300X accelerators, and Apple's A-series and M-series chips on its advanced 3nm and 4nm process nodes.",
+      "tags": [
+        "TSMC",
+        "NVIDIA",
+        "AMD",
+        "Apple",
+        "foundry",
+        "supply",
+        "semiconductor"
+      ]
+    },
+    {
+      "id": "snip-068",
+      "text": "TSMC's dominance in advanced semiconductor manufacturing \u2014 processing nodes below 5nm \u2014 gives it significant pricing power over AI chip companies including NVIDIA, AMD, and Broadcom.",
+      "tags": [
+        "TSMC",
+        "semiconductor",
+        "foundry",
+        "supply chain",
+        "NVIDIA",
+        "AMD",
+        "Broadcom"
+      ]
+    },
+    {
+      "id": "snip-069",
+      "text": "Apple relies on TSMC to manufacture its A-series mobile chips and M-series laptop and desktop chips, giving TSMC critical leverage in the consumer electronics supply chain.",
+      "tags": [
+        "TSMC",
+        "Apple",
+        "semiconductor",
+        "supply",
+        "foundry",
+        "M-series"
+      ]
+    },
+    {
+      "id": "snip-070",
+      "text": "Broadcom is one of TSMC's largest customers, sourcing advanced-process manufacturing for its custom AI ASICs designed for Google's TPU program and Meta's MTIA accelerator.",
+      "tags": [
+        "Broadcom",
+        "TSMC",
+        "Google",
+        "Meta",
+        "ASIC",
+        "AI",
+        "supply"
+      ]
+    },
+    {
+      "id": "snip-071",
+      "text": "Qualcomm's Snapdragon X Elite chip for Windows laptops competes directly with Intel's Core Ultra series in the AI PC market, representing the first serious ARM-based challenge to Intel's PC CPU dominance.",
+      "tags": [
+        "Qualcomm",
+        "Intel",
+        "competition",
+        "AI PC",
+        "Snapdragon",
+        "ARM",
+        "semiconductor"
+      ]
+    },
+    {
+      "id": "snip-072",
+      "text": "Apple dropped Qualcomm modems in some iPhone 16 Pro models after developing its own C1 cellular modem chip, though Qualcomm modems remain in many iPhone 16 configurations.",
+      "tags": [
+        "Qualcomm",
+        "Apple",
+        "modem",
+        "supply",
+        "semiconductor",
+        "competition"
+      ]
+    },
+    {
+      "id": "snip-073",
+      "text": "Qualcomm supplies Snapdragon modem chips to Apple for iPhone cellular connectivity under a multi-year agreement, even as Apple builds its own modem as a long-term replacement.",
+      "tags": [
+        "Qualcomm",
+        "Apple",
+        "modem",
+        "supply",
+        "iPhone"
+      ]
+    },
+    {
+      "id": "snip-074",
+      "text": "Workday competes with Salesforce and Oracle in enterprise HCM (human capital management) software, with all three targeting large-enterprise HR, payroll, and finance buyers.",
+      "tags": [
+        "Workday",
+        "Salesforce",
+        "Oracle",
+        "HCM",
+        "ERP",
+        "enterprise",
+        "competition"
+      ]
+    },
+    {
+      "id": "snip-075",
+      "text": "ServiceNow's Now Platform competes with Workday in HR service delivery and IT workflow automation, with both companies embedding AI agents into their enterprise software platforms.",
+      "tags": [
+        "ServiceNow",
+        "Workday",
+        "AI",
+        "enterprise",
+        "HCM",
+        "competition"
+      ]
+    },
+    {
+      "id": "snip-076",
+      "text": "Cloudflare's Workers AI platform allows developers to run AI inference at the network edge, competing with Amazon CloudFront and Microsoft Azure CDN for edge compute customers.",
+      "tags": [
+        "Cloudflare",
+        "Amazon",
+        "Microsoft",
+        "AI",
+        "edge computing",
+        "competition"
+      ]
+    },
+    {
+      "id": "snip-077",
+      "text": "Cloudflare's network spans over 300 cities globally and serves as infrastructure for over 20% of the world's websites, giving it leverage in edge AI inference against hyperscaler offerings.",
+      "tags": [
+        "Cloudflare",
+        "edge computing",
+        "AI",
+        "infrastructure",
+        "network"
+      ]
+    },
+    {
+      "id": "snip-078",
+      "text": "MongoDB's Atlas cloud database platform competes with Oracle's Autonomous Database and Microsoft Azure Cosmos DB for developers building AI-powered applications requiring flexible document storage.",
+      "tags": [
+        "MongoDB",
+        "Oracle",
+        "Microsoft",
+        "database",
+        "cloud",
+        "AI",
+        "competition"
+      ]
+    },
+    {
+      "id": "snip-079",
+      "text": "Elastic NV's Elasticsearch platform powers AI-native search and retrieval-augmented generation (RAG) applications, competing with MongoDB Atlas Vector Search in the AI search market.",
+      "tags": [
+        "Elastic",
+        "MongoDB",
+        "AI",
+        "search",
+        "RAG",
+        "vector search",
+        "competition"
+      ]
+    },
+    {
+      "id": "snip-080",
+      "text": "Lip-Bu Tan became Intel CEO in March 2025, succeeding the interim co-CEO arrangement that followed Pat Gelsinger's departure in December 2024.",
+      "tags": [
+        "Intel",
+        "Lip-Bu Tan",
+        "CEO",
+        "leadership",
+        "executive",
+        "event"
+      ]
+    },
+    {
+      "id": "snip-081",
+      "text": "Pat Gelsinger left Intel as CEO in December 2024 after the board determined the company's turnaround was not progressing fast enough, ending his 'IDM 2.0' manufacturing comeback strategy.",
+      "tags": [
+        "Intel",
+        "Pat Gelsinger",
+        "CEO",
+        "executive",
+        "leadership change"
+      ]
+    },
+    {
+      "id": "snip-082",
+      "text": "Safra Catz has served as Oracle CEO since 2014 and led the company's transformation from on-premise database vendor to cloud infrastructure provider competing with AWS, Azure, and Google Cloud.",
+      "tags": [
+        "Oracle",
+        "Safra Catz",
+        "CEO",
+        "executive",
+        "cloud",
+        "leadership"
+      ]
+    },
+    {
+      "id": "snip-083",
+      "text": "Marc Benioff co-founded Salesforce in 1999 and has served as CEO continuously, guiding the company from a CRM startup to the largest enterprise CRM software vendor globally.",
+      "tags": [
+        "Salesforce",
+        "Marc Benioff",
+        "CEO",
+        "executive",
+        "CRM",
+        "leadership"
+      ]
+    },
+    {
+      "id": "snip-084",
+      "text": "Alex Karp co-founded Palantir in 2003 and serves as CEO, building the company from a government intelligence platform to a commercial AI enterprise software company.",
+      "tags": [
+        "Palantir",
+        "Alex Karp",
+        "CEO",
+        "executive",
+        "AI",
+        "leadership"
+      ]
+    },
+    {
+      "id": "snip-085",
+      "text": "Sridhar Ramaswamy joined Snowflake as CEO in February 2024 after leaving Google, where he ran its advertising technology business, and is steering Snowflake's AI data cloud strategy.",
+      "tags": [
+        "Snowflake",
+        "Sridhar Ramaswamy",
+        "Google",
+        "CEO",
+        "executive",
+        "leadership"
+      ]
+    },
+    {
+      "id": "snip-086",
+      "text": "Bill McDermott became ServiceNow CEO in November 2019 after leaving SAP, where he had been CEO, bringing enterprise sales experience that has driven Now Platform's rapid commercial expansion.",
+      "tags": [
+        "ServiceNow",
+        "Bill McDermott",
+        "CEO",
+        "executive",
+        "leadership",
+        "enterprise"
+      ]
+    },
+    {
+      "id": "snip-087",
+      "text": "Ian Yang, former Intel China president, joined AMD in July 2025 as Corporate VP for the Lenovo global account, directly leveraging his relationships from Intel's largest PC manufacturing partner.",
+      "tags": [
+        "Intel",
+        "AMD",
+        "Ian Yang",
+        "executive",
+        "competition",
+        "executive move"
+      ]
+    },
+    {
+      "id": "snip-088",
+      "text": "Ariel Kelman left his CMO role at Salesforce in early 2026 to become AMD's Chief Marketing Officer, a move that gives AMD enterprise SaaS marketing expertise as it expands beyond chips.",
+      "tags": [
+        "Salesforce",
+        "AMD",
+        "Ariel Kelman",
+        "CMO",
+        "executive",
+        "executive move"
+      ]
+    },
+    {
+      "id": "snip-089",
+      "text": "NVIDIA supplies H100 and A100 GPU clusters to Oracle Cloud Infrastructure, which uses them to offer dedicated AI training environments as an alternative to AWS, Azure, and Google Cloud.",
+      "tags": [
+        "NVIDIA",
+        "Oracle",
+        "H100",
+        "GPU",
+        "cloud",
+        "supply",
+        "AI"
+      ]
+    },
+    {
+      "id": "snip-090",
+      "text": "ServiceNow's Now Platform is used by NVIDIA for internal IT operations and service management, illustrating how AI chip companies themselves depend on enterprise SaaS vendors for operational infrastructure.",
+      "tags": [
+        "ServiceNow",
+        "NVIDIA",
+        "enterprise",
+        "IT",
+        "supply",
+        "customer"
+      ]
+    },
+    {
+      "id": "snip-091",
+      "text": "TSMC, AMD, Apple, and Broadcom form an interconnected supply chain: TSMC manufactures chips designed by AMD, Apple, and Broadcom, making TSMC a single point of concentration risk for US AI hardware.",
+      "tags": [
+        "TSMC",
+        "AMD",
+        "Apple",
+        "Broadcom",
+        "supply chain",
+        "risk",
+        "semiconductor"
+      ]
+    }
+  ]
+}

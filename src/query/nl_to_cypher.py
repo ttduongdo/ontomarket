@@ -143,9 +143,15 @@ def translate(question: str) -> TranslationResult:
     Returns:
         TranslationResult with type, preset_key or cypher, rationale, closest_preset.
     """
-    api_key = os.getenv("ANTHROPIC_API_KEY")
+    api_key = os.getenv("ANTHROPIC_API_KEY", "")
     if not api_key:
-        raise EnvironmentError("ANTHROPIC_API_KEY is not set in .env")
+        try:
+            import streamlit as st
+            api_key = st.secrets.get("ANTHROPIC_API_KEY", "")
+        except Exception:
+            pass
+    if not api_key:
+        raise EnvironmentError("ANTHROPIC_API_KEY is not set in .env or Streamlit secrets")
 
     client = anthropic.Anthropic(api_key=api_key)
 

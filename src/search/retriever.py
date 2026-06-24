@@ -39,7 +39,13 @@ def _get_collection() -> chromadb.Collection:
     global _collection
     if _collection is None:
         client = chromadb.PersistentClient(path=str(CHROMA_PATH))
-        _collection = client.get_collection(COLLECTION_NAME)
+        try:
+            _collection = client.get_collection(COLLECTION_NAME)
+        except Exception:
+            # Collection missing (e.g. fresh Streamlit Cloud deploy) — rebuild from snippets file
+            from src.search.embed import main as _build_index
+            _build_index()
+            _collection = client.get_collection(COLLECTION_NAME)
     return _collection
 
 

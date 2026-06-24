@@ -33,10 +33,17 @@ build/
 neo4j/data/
 neo4j/logs/
 
-# ChromaDB local store
+# ChromaDB local store — rebuilt automatically from vector_snippets.json on first run
 chroma_db/
 
-# Raw data may be large; processed artefacts are reproducible
-# Uncomment if you want to exclude them from version control:
-data/raw/
-# data/processed/
+# Raw data: exclude large/sensitive files but keep the snippets Streamlit Cloud needs
+data/raw/wikidata_companies.json
+data/raw/wikidata_persons.json
+data/raw/curated_edges.json
+data/raw/extracted_edges.json
+data/raw/sec_form4_edges.json
+data/raw/sample_articles.json
+# vector_snippets.json is tracked — Streamlit Cloud uses it to rebuild ChromaDB
+
+# Processed artefacts are reproducible from raw data
+data/processed/

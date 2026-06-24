@@ -15,9 +15,20 @@ from src.graph.queries import run_query, QUERIES
 
 load_dotenv(Path(__file__).parents[2] / ".env")
 
-NEO4J_URI      = os.getenv("NEO4J_URI", "bolt://localhost:7687")
-NEO4J_USER     = os.getenv("NEO4J_USER", "neo4j")
-NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD", "")
+def _secret(key: str, default: str = "") -> str:
+    """Read from env, then fall back to st.secrets (Streamlit Cloud)."""
+    val = os.getenv(key, "")
+    if val:
+        return val
+    try:
+        import streamlit as st
+        return st.secrets.get(key, default)
+    except Exception:
+        return default
+
+NEO4J_URI      = _secret("NEO4J_URI",      "bolt://localhost:7687")
+NEO4J_USER     = _secret("NEO4J_USER",     "neo4j")
+NEO4J_PASSWORD = _secret("NEO4J_PASSWORD", "")
 
 
 def get_driver() -> Driver:
