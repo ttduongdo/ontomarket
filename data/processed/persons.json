@@ -1,0 +1,164 @@
+{
+  "persons": [
+    {
+      "person_id": "amar-subramanya",
+      "name": "Amar Subramanya"
+    },
+    {
+      "person_id": "andrew-grove",
+      "name": "Andrew Grove"
+    },
+    {
+      "person_id": "andy-jassy",
+      "name": "Andy Jassy"
+    },
+    {
+      "person_id": "ariel-kelman",
+      "name": "Ariel Kelman"
+    },
+    {
+      "person_id": "bill-gates",
+      "name": "Bill Gates"
+    },
+    {
+      "person_id": "bob-swan",
+      "name": "Bob Swan"
+    },
+    {
+      "person_id": "brian-krzanich",
+      "name": "Brian Krzanich"
+    },
+    {
+      "person_id": "chris-hughes",
+      "name": "Chris Hughes"
+    },
+    {
+      "person_id": "chris-malachowsky",
+      "name": "Chris Malachowsky"
+    },
+    {
+      "person_id": "craig-r-barrett",
+      "name": "Craig R. Barrett"
+    },
+    {
+      "person_id": "curtis-priem",
+      "name": "Curtis Priem"
+    },
+    {
+      "person_id": "dustin-moskovitz",
+      "name": "Dustin Moskovitz"
+    },
+    {
+      "person_id": "eduardo-saverin",
+      "name": "Eduardo Saverin"
+    },
+    {
+      "person_id": "gil-amelio",
+      "name": "Gil Amelio"
+    },
+    {
+      "person_id": "gordon-moore",
+      "name": "Gordon Moore"
+    },
+    {
+      "person_id": "ian-yang",
+      "name": "Ian Yang"
+    },
+    {
+      "person_id": "jeff-bezos",
+      "name": "Jeff Bezos"
+    },
+    {
+      "person_id": "jensen-huang",
+      "name": "Jensen Huang"
+    },
+    {
+      "person_id": "john-sculley",
+      "name": "John Sculley"
+    },
+    {
+      "person_id": "larry-page",
+      "name": "Larry Page"
+    },
+    {
+      "person_id": "lisa-su",
+      "name": "Lisa Su"
+    },
+    {
+      "person_id": "mark-zuckerberg",
+      "name": "Mark Zuckerberg"
+    },
+    {
+      "person_id": "michael-scott",
+      "name": "Michael Scott"
+    },
+    {
+      "person_id": "michael-spindler",
+      "name": "Michael Spindler"
+    },
+    {
+      "person_id": "michelle-johnston-holthaus",
+      "name": "Michelle Johnston Holthaus"
+    },
+    {
+      "person_id": "mike-markkula",
+      "name": "Mike Markkula"
+    },
+    {
+      "person_id": "pat-gelsinger",
+      "name": "Pat Gelsinger"
+    },
+    {
+      "person_id": "paul-allen",
+      "name": "Paul Allen"
+    },
+    {
+      "person_id": "paul-otellini",
+      "name": "Paul Otellini"
+    },
+    {
+      "person_id": "q106028933",
+      "name": "Q106028933"
+    },
+    {
+      "person_id": "robert-noyce",
+      "name": "Robert Noyce"
+    },
+    {
+      "person_id": "ronald-wayne",
+      "name": "Ronald Wayne"
+    },
+    {
+      "person_id": "satya-nadella",
+      "name": "Satya Nadella"
+    },
+    {
+      "person_id": "sergey-brin",
+      "name": "Sergey Brin"
+    },
+    {
+      "person_id": "steve-ballmer",
+      "name": "Steve Ballmer"
+    },
+    {
+      "person_id": "steve-jobs",
+      "name": "Steve Jobs"
+    },
+    {
+      "person_id": "steve-wozniak",
+      "name": "Steve Wozniak"
+    },
+    {
+      "person_id": "sundar-pichai",
+      "name": "Sundar Pichai"
+    },
+    {
+      "person_id": "tim-cook",
+      "name": "Tim Cook"
+    },
+    {
+      "person_id": "\u0628\u0646-\u0645\u0646\u0634\u0644\u064a\u0646",
+      "name": "\u0628\u0646 \u0645\u0646\u0634\u0644\u064a\u0646"
+    }
+  ]
+}

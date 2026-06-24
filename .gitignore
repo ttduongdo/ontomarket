@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Environment variables
+.env
+.env.*
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Neo4j local data
+neo4j/data/
+neo4j/logs/
+
+# ChromaDB local store
+chroma_db/
+
+# Raw data may be large; processed artefacts are reproducible
+# Uncomment if you want to exclude them from version control:
+data/raw/
+# data/processed/

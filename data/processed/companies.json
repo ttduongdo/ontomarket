@@ -1,0 +1,89 @@
+{
+  "companies": [
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "founded_date": "1993-04-05"
+    },
+    {
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices",
+      "founded_date": "1680-01-01"
+    },
+    {
+      "ticker": "INTC",
+      "name": "Intel",
+      "founded_date": "1968-07-18"
+    },
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "founded_date": "1975-04-04"
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet Inc.",
+      "founded_date": "2015-10-02"
+    },
+    {
+      "ticker": "AMZN",
+      "name": "Amazon",
+      "founded_date": "1994-07-05"
+    },
+    {
+      "ticker": "META",
+      "name": "Meta Platforms",
+      "founded_date": "2004-07-29"
+    },
+    {
+      "ticker": "AAPL",
+      "name": "Apple Inc.",
+      "founded_date": "1976-04-01"
+    },
+    {
+      "ticker": "PLTR",
+      "name": "Palantir Technologies",
+      "founded_date": "2014-01-01"
+    },
+    {
+      "ticker": "SNOW",
+      "name": "Snowflake Inc.",
+      "founded_date": null
+    },
+    {
+      "ticker": "CRM",
+      "name": "Salesforce",
+      "founded_date": null
+    },
+    {
+      "ticker": "NOW",
+      "name": "ServiceNow",
+      "founded_date": null
+    },
+    {
+      "ticker": "ORCL",
+      "name": "Oracle Corporation",
+      "founded_date": "1944-07-22"
+    },
+    {
+      "ticker": "NET",
+      "name": "Cloudflare",
+      "founded_date": null
+    },
+    {
+      "ticker": "MDB",
+      "name": "MongoDB",
+      "founded_date": null
+    },
+    {
+      "ticker": "ESTC",
+      "name": "Elastic NV",
+      "founded_date": null
+    },
+    {
+      "ticker": "AVGO",
+      "name": "Broadcom Inc.",
+      "founded_date": null
+    }
+  ]
+}

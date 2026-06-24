@@ -1,0 +1,214 @@
+{
+  "competes_with": [
+    {
+      "company_a": "NVDA",
+      "company_b": "AMD"
+    },
+    {
+      "company_a": "NVDA",
+      "company_b": "INTC"
+    },
+    {
+      "company_a": "INTC",
+      "company_b": "AMD"
+    },
+    {
+      "company_a": "MSFT",
+      "company_b": "GOOGL"
+    },
+    {
+      "company_a": "MSFT",
+      "company_b": "AMZN"
+    },
+    {
+      "company_a": "MSFT",
+      "company_b": "AAPL"
+    },
+    {
+      "company_a": "GOOGL",
+      "company_b": "AMZN"
+    },
+    {
+      "company_a": "GOOGL",
+      "company_b": "AAPL"
+    },
+    {
+      "company_a": "CRM",
+      "company_b": "NOW"
+    },
+    {
+      "company_a": "MDB",
+      "company_b": "SNOW"
+    },
+    {
+      "company_a": "ORCL",
+      "company_b": "MSFT"
+    }
+  ],
+  "supplies_to": [
+    {
+      "supplier": "NVDA",
+      "customer": "MSFT",
+      "category": "AI accelerator GPUs (H100 NVL for Azure confidential VMs and AI workloads)"
+    },
+    {
+      "supplier": "NVDA",
+      "customer": "AMZN",
+      "category": "AI accelerator GPUs (H100 for AWS EC2 P5 instances; scales to 20,000-GPU clusters)"
+    },
+    {
+      "supplier": "NVDA",
+      "customer": "GOOGL",
+      "category": "AI accelerator GPUs (H100 for GCP A3 supercomputer VMs, up to 26,000 GPUs per cluster)"
+    },
+    {
+      "supplier": "NVDA",
+      "customer": "META",
+      "category": "AI accelerator GPUs (H100 fleet; 100,000+ H100s for Llama 4 training)"
+    },
+    {
+      "supplier": "AVGO",
+      "customer": "GOOGL",
+      "category": "Custom AI accelerator silicon (TPU ASIC co-design; Broadcom is Google's primary ASIC partner)"
+    },
+    {
+      "supplier": "AVGO",
+      "customer": "META",
+      "category": "Custom AI accelerator silicon (MTIA ASIC co-design; Meta committed 1GW through 2029)"
+    },
+    {
+      "supplier": "INTC",
+      "customer": "MSFT",
+      "category": "Server CPUs (Xeon Scalable for Azure general compute and confidential computing)"
+    }
+  ],
+  "executive_of": [
+    {
+      "person_id": "jensen-huang",
+      "company_ticker": "NVDA",
+      "title": "CEO and Co-founder",
+      "start_date": "1993-01-01",
+      "end_date": null
+    },
+    {
+      "person_id": "lisa-su",
+      "company_ticker": "AMD",
+      "title": "CEO",
+      "start_date": "2014-10-08",
+      "end_date": null
+    },
+    {
+      "person_id": "pat-gelsinger",
+      "company_ticker": "INTC",
+      "title": "CEO",
+      "start_date": "2021-02-15",
+      "end_date": "2024-12-01"
+    },
+    {
+      "person_id": "satya-nadella",
+      "company_ticker": "MSFT",
+      "title": "CEO",
+      "start_date": "2014-02-04",
+      "end_date": null
+    },
+    {
+      "person_id": "sundar-pichai",
+      "company_ticker": "GOOGL",
+      "title": "CEO",
+      "start_date": "2015-08-10",
+      "end_date": null
+    },
+    {
+      "person_id": "andy-jassy",
+      "company_ticker": "AMZN",
+      "title": "CEO",
+      "start_date": "2021-07-05",
+      "end_date": null
+    },
+    {
+      "person_id": "mark-zuckerberg",
+      "company_ticker": "META",
+      "title": "CEO and Co-founder",
+      "start_date": "2004-02-04",
+      "end_date": null
+    },
+    {
+      "person_id": "tim-cook",
+      "company_ticker": "AAPL",
+      "title": "CEO",
+      "start_date": "2011-08-24",
+      "end_date": null
+    },
+    {
+      "person_id": "amar-subramanya",
+      "company_ticker": "GOOGL",
+      "title": "VP Engineering, Gemini Assistant",
+      "start_date": "2009-01-01",
+      "end_date": "2025-07-01"
+    },
+    {
+      "person_id": "amar-subramanya",
+      "company_ticker": "MSFT",
+      "title": "Corporate VP, AI",
+      "start_date": "2025-07-01",
+      "end_date": "2025-11-01"
+    },
+    {
+      "person_id": "amar-subramanya",
+      "company_ticker": "AAPL",
+      "title": "VP Artificial Intelligence",
+      "start_date": "2025-12-01",
+      "end_date": null
+    },
+    {
+      "person_id": "ian-yang",
+      "company_ticker": "INTC",
+      "title": "President, Intel China",
+      "start_date": "2009-01-01",
+      "end_date": "2021-01-01"
+    },
+    {
+      "person_id": "ian-yang",
+      "company_ticker": "AMD",
+      "title": "Corporate VP, Lenovo Global Account",
+      "start_date": "2025-07-01",
+      "end_date": null
+    },
+    {
+      "person_id": "ariel-kelman",
+      "company_ticker": "CRM",
+      "title": "Chief Marketing Officer",
+      "start_date": "2023-01-01",
+      "end_date": "2026-02-09"
+    },
+    {
+      "person_id": "ariel-kelman",
+      "company_ticker": "AMD",
+      "title": "SVP and Chief Marketing Officer",
+      "start_date": "2026-02-09",
+      "end_date": null
+    }
+  ],
+  "affected_by": [
+    {
+      "company_ticker": "INTC",
+      "event_id": "EVT-INTC-2024-restructure",
+      "impact": "negative"
+    },
+    {
+      "company_ticker": "INTC",
+      "event_id": "EVT-INTC-2024-ceo-exit",
+      "impact": "negative"
+    },
+    {
+      "company_ticker": "MSFT",
+      "event_id": "EVT-MSFT-2023-openai",
+      "impact": "positive"
+    },
+    {
+      "company_ticker": "AAPL",
+      "event_id": "EVT-AAPL-2025-ai-chief",
+      "impact": "negative"
+    }
+  ]
+}
