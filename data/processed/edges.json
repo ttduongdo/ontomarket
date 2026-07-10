@@ -200,6 +200,13 @@
       "company_ticker": "AAPL",
       "title": "CEO",
       "start_date": "2011-08-24",
+      "end_date": "2026-04-20"
+    },
+    {
+      "person_id": "john-ternus",
+      "company_ticker": "AAPL",
+      "title": "CEO",
+      "start_date": "2026-04-20",
       "end_date": null
     },
     {

@@ -47,3 +47,5 @@ data/raw/sample_articles.json
 
 # Processed artefacts are reproducible from raw data
 data/processed/
+
+FULL_APP_TODO.md

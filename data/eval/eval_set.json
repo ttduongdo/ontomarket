@@ -1,0 +1,93 @@
+{
+  "_meta": {
+    "description": "OntoMarket precision/recall eval set — 5 preset questions with expected entities and hop counts.",
+    "scoring": "Graph entity recall = fraction of must_include_entities found in any result column. Vector entity recall = fraction found across top-5 snippet texts. Vector chain recall = 1 if any single snippet contains ALL must_include_entities, else 0 (multi-hop chains never collapse into one sentence)."
+  },
+  "questions": [
+    {
+      "id": "q-hero",
+      "query_key": "hero",
+      "question": "Which companies face supply chain exposure given an executive moved from a company to its competitor after a major restructuring event?",
+      "hops": 4,
+      "hop_chain": "Event → AFFECTED_BY → Company → COMPETES_WITH → Company ← EXECUTIVE_OF ← Person → EXECUTIVE_OF (current) and Company ← SUPPLIES_TO ← Supplier",
+      "must_include_entities": ["MSFT", "AAPL", "NVDA", "INTC"],
+      "must_include_rationale": {
+        "MSFT": "affected company — has EVT-MSFT-2023-openai, EVT-MSFT-2023-activision, EVT-INTC-2024-foundry-msft",
+        "AAPL": "competitor — Amar Subramanya moved MSFT→AAPL (start 2025-12-01, end null); MSFT-AAPL COMPETES_WITH exists",
+        "NVDA": "exposed supplier — NVDA SUPPLIES_TO MSFT",
+        "INTC": "exposed supplier — INTC SUPPLIES_TO MSFT"
+      },
+      "expected_min_rows": 1,
+      "vector_can_compose": false,
+      "vector_limitation": "No single snippet states: 'MSFT was affected by an event, Amar Subramanya moved to its competitor AAPL, and NVDA/INTC supply to MSFT'. The 4-hop chain cannot be expressed in one sentence."
+    },
+    {
+      "id": "q-exec-then-event",
+      "query_key": "exec_move_then_event",
+      "question": "An executive moved from a company to a competitor — has that competitor had a notable event since the move?",
+      "hops": 3,
+      "hop_chain": "Person → EXECUTIVE_OF (former, end_date not null) → Company → COMPETES_WITH → Company ← AFFECTED_BY ← Event (after move date)",
+      "must_include_entities": ["SNOW", "GOOGL", "EVT-SNOW-2024-ceo"],
+      "must_include_rationale": {
+        "SNOW": "current company — Sridhar Ramaswamy moved from GOOGL to SNOW (start 2024-02-28, end null)",
+        "GOOGL": "former company — Sridhar was SVP at GOOGL (end 2018-01-01); GOOGL-? or MSFT-GOOGL competes",
+        "EVT-SNOW-2024-ceo": "event at SNOW (CEO transition) which occurs after the exec move date"
+      },
+      "expected_min_rows": 0,
+      "vector_can_compose": false,
+      "vector_limitation": "Vector cannot chain: find who left GOOGL, confirm they joined SNOW, then find events at SNOW that post-date the move. Three separate lookups that require date-ordered traversal."
+    },
+    {
+      "id": "q-reverse-supply",
+      "query_key": "reverse_supply_exposure",
+      "question": "If a company faces a regulatory action or lawsuit, which of its suppliers face downstream exposure?",
+      "hops": 2,
+      "hop_chain": "Company → AFFECTED_BY → Event (regulatory_filing or lawsuit) and Company ← SUPPLIES_TO ← Supplier",
+      "must_include_entities": ["NVDA", "GOOGL", "INTC"],
+      "must_include_rationale": {
+        "NVDA": "NVDA AFFECTED_BY EVT-NVDA-2023-export-controls (regulatory_filing); TSM supplies to NVDA",
+        "GOOGL": "GOOGL AFFECTED_BY EVT-GOOGL-2024-antitrust (lawsuit); AVGO supplies to GOOGL",
+        "INTC": "INTC AFFECTED_BY EVT-INTC-2024-restructure (regulatory_filing); who supplies INTC?"
+      },
+      "expected_min_rows": 1,
+      "vector_can_compose": false,
+      "vector_limitation": "Vector retrieves 'NVDA faces export controls' and 'TSM makes NVDA chips' as separate snippets but cannot join them to assert supply exposure."
+    },
+    {
+      "id": "q-competitor-events",
+      "query_key": "competitor_events",
+      "question": "What notable events have Intel's direct competitors had recently?",
+      "hops": 2,
+      "hop_chain": "Company (INTC) → COMPETES_WITH → Company ← AFFECTED_BY ← Event",
+      "must_include_entities": ["AMD", "NVDA", "EVT-AMD-2023-mi300x", "EVT-NVDA-2023-export-controls"],
+      "must_include_rationale": {
+        "AMD": "INTC COMPETES_WITH AMD; AMD has EVT-AMD-2023-mi300x",
+        "NVDA": "INTC COMPETES_WITH NVDA; NVDA has EVT-NVDA-2023-export-controls",
+        "EVT-AMD-2023-mi300x": "product_launch event at AMD (MI300X launch)",
+        "EVT-NVDA-2023-export-controls": "regulatory_filing event at NVDA"
+      },
+      "expected_min_rows": 2,
+      "vector_can_compose": true,
+      "vector_limitation": "Vector can find 'AMD launched MI300X' and 'NVDA faces export controls' independently, but cannot guarantee completeness — it won't know which companies are INTC's graph-defined competitors unless it happens to retrieve those snippets in top-5."
+    },
+    {
+      "id": "q-supply-chain-map",
+      "query_key": "supply_chain_map",
+      "question": "Which companies supply AI chips and infrastructure to the major cloud providers?",
+      "hops": 1,
+      "hop_chain": "Company → SUPPLIES_TO → Company",
+      "must_include_entities": ["NVDA", "MSFT", "AMZN", "GOOGL", "TSM", "AVGO"],
+      "must_include_rationale": {
+        "NVDA": "supplies H100 GPUs to MSFT, AMZN, GOOGL, META, ORCL",
+        "MSFT": "customer — receives from NVDA and INTC",
+        "AMZN": "customer — receives from NVDA",
+        "GOOGL": "customer — receives from NVDA and AVGO",
+        "TSM": "upstream fab — supplies to NVDA, AMD, AAPL, AVGO",
+        "AVGO": "supplies custom ASICs to GOOGL and META"
+      },
+      "expected_min_rows": 5,
+      "vector_can_compose": true,
+      "vector_limitation": "Vector can retrieve individual supply relationships but will miss some and cannot guarantee a complete map — it has no concept of 'all' suppliers."
+    }
+  ]
+}

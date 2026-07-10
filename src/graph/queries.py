@@ -41,7 +41,6 @@ QUERIES: dict[str, dict] = {
               evt.description AS event_description,
               y.ticker        AS competitor,
               y.name          AS competitor_name,
-              p.name          AS executive,
               e1.title        AS former_title,
               e1.end_date     AS departure_date,
               e2.title        AS current_title,
@@ -176,43 +175,48 @@ def run_query(driver: Driver, query_key: str) -> tuple[list[dict], list[tuple]]:
 
 
 def _extract_triples(key: str, records: list[dict]) -> list[tuple]:
-    """Build (source, target, rel_type) triples for NetworkX from query results."""
-    seen = set()
-    triples = []
+    """Build (source, target, rel_type) triples for the graph viz."""
+    seen: set = set()
+    triples: list = []
 
     def add(src, tgt, rel):
-        edge = (src, tgt, rel)
+        if not src or not tgt:
+            return
+        edge = (str(src), str(tgt), rel)
         if edge not in seen:
             seen.add(edge)
             triples.append(edge)
 
+    def g(row, key, fallback=""):
+        return row.get(key) or fallback
+
     if key == "hero":
         for r in records:
-            add(r["event_id"],        r["affected_company"], "AFFECTED_BY")
-            add(r["affected_company"], r["competitor"],       "COMPETES_WITH")
-            add(r["executive"],        r["affected_company"], "EXECUTIVE_OF (former)")
-            add(r["executive"],        r["competitor"],       "EXECUTIVE_OF (current)")
-            add(r["exposed_supplier"], r["affected_company"], "SUPPLIES_TO")
+            add(g(r, "event_id"),        g(r, "affected_company"), "AFFECTED_BY")
+            add(g(r, "affected_company"), g(r, "competitor"),       "COMPETES_WITH")
+            add(g(r, "executive"),        g(r, "affected_company"), "EXECUTIVE_OF (former)")
+            add(g(r, "executive"),        g(r, "competitor"),       "EXECUTIVE_OF (current)")
+            add(g(r, "exposed_supplier"), g(r, "affected_company"), "SUPPLIES_TO")
 
     elif key == "exec_move_then_event":
         for r in records:
-            add(r["executive"],      r["former_company"],   "EXECUTIVE_OF (former)")
-            add(r["executive"],      r["current_company"],  "EXECUTIVE_OF (current)")
-            add(r["former_company"], r["current_company"],  "COMPETES_WITH")
-            add(r["event_id"],       r["current_company"],  "AFFECTED_BY")
+            add(g(r, "executive"),      g(r, "former_company"),  "EXECUTIVE_OF (former)")
+            add(g(r, "executive"),      g(r, "current_company"), "EXECUTIVE_OF (current)")
+            add(g(r, "former_company"), g(r, "current_company"), "COMPETES_WITH")
+            add(g(r, "event_id"),       g(r, "current_company"), "AFFECTED_BY")
 
     elif key == "reverse_supply_exposure":
         for r in records:
-            add(r["event_id"],   r["affected_company"], "AFFECTED_BY")
-            add(r["supplier"],   r["affected_company"], "SUPPLIES_TO")
+            add(g(r, "event_id"),  g(r, "affected_company"), "AFFECTED_BY")
+            add(g(r, "supplier"),  g(r, "affected_company"), "SUPPLIES_TO")
 
     elif key == "competitor_events":
         for r in records:
-            add("focus",         r["rival"],    "COMPETES_WITH")
-            add(r["event_id"],   r["rival"],    "AFFECTED_BY")
+            add("INTC",          g(r, "rival"), "COMPETES_WITH")
+            add(g(r, "event_id"), g(r, "rival"), "AFFECTED_BY")
 
     elif key == "supply_chain_map":
         for r in records:
-            add(r["supplier"], r["customer"], "SUPPLIES_TO")
+            add(g(r, "supplier"), g(r, "customer"), "SUPPLIES_TO")
 
     return triples

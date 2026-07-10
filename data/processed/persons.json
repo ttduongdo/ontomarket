@@ -89,6 +89,10 @@
       "name": "John Sculley"
     },
     {
+      "person_id": "john-ternus",
+      "name": "John Ternus"
+    },
+    {
       "person_id": "larry-page",
       "name": "Larry Page"
     },

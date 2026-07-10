@@ -127,6 +127,20 @@ ALIAS_TABLE: dict[str, str] = {
 # Known tickers (for quick membership checks)
 KNOWN_TICKERS: frozenset[str] = frozenset(ALIAS_TABLE.values())
 
+# Reverse index — ticker -> every known name variant (lowercase), including
+# the ticker itself. Used to check whether a ticker is "mentioned" in free
+# text that more naturally refers to the company by name (e.g. "Nvidia"
+# rather than "NVDA").
+TICKER_TO_ALIASES: dict[str, frozenset[str]] = {
+    ticker: frozenset(name for name, t in ALIAS_TABLE.items() if t == ticker)
+    for ticker in KNOWN_TICKERS
+}
+
+
+def aliases_for(ticker: str) -> frozenset[str]:
+    """All known lowercase name variants for a canonical ticker (including itself)."""
+    return TICKER_TO_ALIASES.get(ticker.strip().upper(), frozenset({ticker.strip().lower()}))
+
 
 def resolve(name: str) -> str | None:
     """
