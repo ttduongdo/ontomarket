@@ -111,7 +111,7 @@ def test_score_question_computes_deltas_correctly():
     assert scored["graph_entity_recall"] == 1.0
     assert scored["vector_entity_recall"] == 0.5
     assert scored["recall_delta"] == pytest.approx(0.5)      # 1.0 - 0.5
-    assert scored["chain_gap"] == pytest.approx(1.0)          # 1.0 - 0.0, since no single snippet has both
+    assert scored["chain_gap"] == pytest.approx(1.0)          # 1.0 - 0.0, no single snippet has both
 
 def test_score_question_rows_ok_flag():
     question = {

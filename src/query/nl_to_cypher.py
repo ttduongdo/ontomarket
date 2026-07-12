@@ -25,7 +25,7 @@ from dotenv import load_dotenv
 
 load_dotenv(Path(__file__).parents[2] / ".env")
 
-MODEL = "claude-sonnet-4-6"
+MODEL = "claude-sonnet-5"
 
 # ---------------------------------------------------------------------------
 # System prompt — ontology + all 5 templates
@@ -133,7 +133,7 @@ class TranslationResult:
 # Public API
 # ---------------------------------------------------------------------------
 
-def translate(question: str) -> TranslationResult:
+def translate(question: str, anchors: list[str] | None = None) -> TranslationResult:
     """
     Translate a natural-language question into a Cypher query or preset key.
 
@@ -155,14 +155,23 @@ def translate(question: str) -> TranslationResult:
 
     client = anthropic.Anthropic(api_key=api_key)
 
+    user_content = question
+    if anchors:
+        user_content += (
+            f"\n\nEntities found in the corpus for this question "
+            f"(prefer these tickers when they fit): {', '.join(anchors)}"
+        )
+
     message = client.messages.create(
         model=MODEL,
         max_tokens=1024,
         system=_SYSTEM,
-        messages=[{"role": "user", "content": question}],
+        messages=[{"role": "user", "content": user_content}],
     )
 
-    raw = message.content[0].text.strip()
+    # content[0] may be a ThinkingBlock (Sonnet 5 has adaptive thinking on by
+    # default) — pick the first text block, don't assume index 0.
+    raw = next(b.text for b in message.content if b.type == "text").strip()
     if raw.startswith("```"):
         lines = raw.splitlines()
         end = -1 if lines[-1].strip() == "```" else len(lines)

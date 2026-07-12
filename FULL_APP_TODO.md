@@ -201,17 +201,23 @@ Before the alias fix, `V-recall` was pinned at 0% everywhere (snippets say "Nvid
 **Why this track exists:** as of 2026-07-09, this project is not actually GraphRAG — it's two parallel, non-interacting systems shown side by side. The graph path runs Cypher and returns rows; the vector path runs cosine similarity and returns snippets; `explainer.py` narrates the graph result in prose. Nothing retrieves from the graph *and* feeds it back into an LLM as grounding context for a synthesized answer, and nothing lets vector search seed a graph traversal. That's the core mechanic GraphRAG requires and it's currently missing. Discussed in full 2026-07-09 (design only, no code written yet).
 
 ### H1. Graph-grounded answer synthesis (the core piece)
-- [ ] Serialize the `triples` list (`source, target, rel_type`) already produced by `queries.py`/`router.py` for the Cytoscape viz into a compact fact list — this is the retrieval context, already sitting unused for this purpose
-- [ ] Extend `src/query/explainer.py` (don't build a separate synthesizer — same inputs plus `triples`, richer output) to answer the user's actual question grounded in that fact list + result rows, not just narrate the rows
-- [ ] Prompt Claude to tag which triples/facts support each claim in its answer
-- [ ] Render citations in the Streamlit UI as inline markers mapping back to specific graph edges — ideally highlightable in the Cytoscape subgraph. This is the real differentiator over vector RAG: a citation here is a literal, verifiable edge, not "this snippet, roughly"
-- [ ] Explicit "insufficient evidence" path: if `triples` is empty or thin (e.g. `q-exec-then-event` returned only 2 rows in the last benchmark), the answer must say so rather than the LLM padding with plausible-sounding filler from training data — this failure mode is more damaging here than in generic RAG since the whole thesis is "graph reasoning is verifiable"
+- [x] Serialize the `triples` list into a numbered fact list (`[n] SRC —REL→ TGT`) inside `explain()` — this is the retrieval context
+- [x] Extended `src/query/explainer.py` in place (not a separate synthesizer) — takes `triples` + rows, answers the question grounded in them; model updated stale `claude-sonnet-4-6` → `claude-opus-4-8`, `max_tokens` 256 → 600
+- [x] System prompt instructs Claude to cite the supporting fact(s) per claim with `[n]` markers, use only the given facts, and end with the "why vector can't compose this" line
+- [x] Render citations in the Streamlit UI: `[n]` markers in the answer + a "Citations" expander legend mapping each `[n]` to its edge ([app.py]), and the Cytoscape edge labels now carry the same `[n]` numbering so graph/answer/legend share one index. (True click-to-highlight across the iframe boundary deferred — see note below; the shared numbering gets ~90% of the value without a component rewrite.)
+- [x] Explicit "insufficient evidence" path: empty `results` and empty `triples` both short-circuit `explain()` with honest messages rather than letting the LLM pad
+- [x] **Verified end-to-end live** (Neo4j + Claude API, 2026-07-09). Hero query → 59 rows / 25 edges → answer with 8 distinct `[n]` citations, every one mapping to a real triple; "why vector can't compose" line present; both insufficient-evidence paths (empty results, rows-but-no-edges) fire correctly with no wasted LLM call. Open nuance: citations are *structurally* valid (all map to real edges) but per-clause *semantic* correctness of each `[n]` is only spot-checkable by hand — fine for the demo, worth a manual audit if rigor is needed later.
+- [ ] *(deferred, optional)* True interactive click-`[n]`-→-highlight-edge requires rebuilding the Cytoscape graph as a bidirectional Streamlit custom component (JS↔Python events); it's currently an isolated `components.html` iframe with no message bridge. Out of scope for H1; shared numbering covers the demo need.
 
 ### H2. Vector-seeded graph traversal (the hybrid piece)
-- [ ] Decide between two patterns (design discussion needed before picking):
-  - Vector-as-fallback-context: if graph traversal is thin, pull top-K vector snippets as supplementary, clearly-lower-confidence context
-  - Vector-as-entity-seeder: use `retriever.search()` to find which entities the question is about, resolve via `resolver.py`, use as anchor params for the graph query — replacing `nl_to_cypher.py`'s current approach of guessing Cypher directly from question text with no retrieval step first
-- [ ] This is the more "real" GraphRAG pattern of the two and probably the better long-term choice, but is a bigger lift than H1
+- [x] Picked **Pattern B (vector-as-entity-seeder)** — the more legitimately "GraphRAG" story, chosen over Pattern A despite smaller near-term accuracy gain at 20 companies (the LLM already extracts entities well from a hardcoded ticker list; B's win is architectural + demonstrable, not accuracy)
+- [x] New `src/query/entity_seeder.py` — `seed_entities(question)` runs `retriever.search()`, pools snippet text + question, substring-matches the G2 alias table, resolves to canonical tickers. Deterministic, no LLM call, testable.
+- [x] `tests/test_entity_seeder.py` — 2 tests (named company, alias resolution), passing under `venv/bin/python -m pytest`
+- [x] `nl_to_cypher.translate()` takes optional `anchors=` and injects them into the user turn ("prefer these tickers when they fit" — a hint, not a constraint); stale model `claude-sonnet-4-6` → `claude-sonnet-5`
+- [x] Wired into `app.py` freeform path: seed → show seeded entities as a caption (makes the retrieve step visible in the demo) → `translate(anchors=...)`
+- [x] **Verified live end-to-end.** "Microsoft" question → anchors `[MSFT,GOOGL,INTC,AAPL]` → generated Cypher targets `{ticker:'MSFT'}` combining SUPPLIES_TO + COMPETES_WITH; alias "Google" correctly seeds GOOGL. Verification caught a real bug: `content[0].text` crashed under Sonnet 5's default-on adaptive thinking (`content[0]` is a ThinkingBlock) — fixed in `nl_to_cypher.py` AND preemptively in `explainer.py` (same latent pattern, currently safe only because it's on Opus 4.8 with thinking off).
+- [x] Env note resolved: `pytest` installed into `venv/` (was missing); tests that import `retriever`/`sentence_transformers` MUST run under `venv/bin/python`, not system Anaconda (broken `protobuf`/`transformers`).
+- [ ] *(known tuning nuance, not a bug)* Seeder over-seeds — pools competitor snippets so "Google" also anchors AMZN/MSFT/INTC/AAPL. Harmless for hint-based seeding; tighten by pooling fewer snippets or weighting question-text matches if it ever causes bad Cypher.
 
 ### H3. Lower priority / probably out of scope given dataset size
 - [ ] Community/entity summarization layer (Microsoft GraphRAG sense) — precomputed cluster summaries retrieved for broad questions; likely not worth it at 20 companies, more relevant at scale
@@ -225,11 +231,11 @@ Before the alias fix, `V-recall` was pinned at 0% everywhere (snippets say "Nvid
 ## Track F — Docs & positioning (makes it shareable)
 
 ### F1. Complete README.md
-- [ ] Fill in running instructions — still a placeholder: "_Instructions added in Phase 5_"
-- [ ] Add Mermaid architecture diagram (data flow: raw → processed → Neo4j/ChromaDB → Streamlit)
-- [ ] Write results table: 5 rows, one per query — what vector returned, what graph returned, why graph wins — still a placeholder: "_Results table ... added after Phase 4_"
-- [ ] Update the "don't redo" framing — README doesn't yet reflect the LLM extraction pipeline, NL→Cypher, eval harness, or confidence scoring that now exist
-- [ ] This is the most important doc for async reviewers who won't run the demo live, and it's currently the biggest gap between what's built and what's documented
+- [x] Running instructions filled in (venv, secrets, merge → ingest → embed → streamlit, benchmark, tests) — includes the venv-vs-Anaconda protobuf gotcha
+- [x] Mermaid data-flow diagram added (raw → processed → Neo4j/ChromaDB → retrieve → traverse → synthesize → UI)
+- [x] Results table written from **real** benchmark numbers (the run_eval output captured during G/H work), 5 rows, with the "V-chain 0% everywhere" headline finding called out
+- [x] Thesis + stack updated to reflect GraphRAG synthesis: added Claude API + Cytoscape, "local Docker" → "Aura", dropped stale NetworkX/Plotly; dataset table shows real counts (20/48/16/75 edges/91 snippets)
+- [ ] Results table is a **snapshot** — re-running the benchmark with a different `top_k` will shift the numbers; update the table if that happens
 
 ### F2. Results doc
 - [ ] Write `docs/results.md` with 3–4 concrete worked examples
@@ -283,3 +289,12 @@ Track G (G1–G4: unit tests, matching-quality fix, historical tracking, ground-
 - Built an LLM-based extraction pipeline (Claude API) converting unstructured news into structured graph edges with confidence scoring and entity resolution
 - Built a natural-language-to-Cypher query layer with graceful fallback, plus an eval harness benchmarking graph vs. vector retrieval on scored questions
 - Demonstrated that multi-hop Cypher traversals answer relational financial questions (supply chain exposure given executive movement + competitor relationships) that pure vector search cannot compose correctly
+
+## Pipeline
+question
+  → retriever.search(question)          # you have this
+  → extract entity mentions from snippet text + tags
+  → resolver.resolve() each mention     # you have this (+ aliases_for from G2)
+  → set of anchor tickers
+  → pass anchors into nl_to_cypher.translate(question, anchors=...)
+  → LLM generates Cypher seeded with confirmed entities

@@ -16,15 +16,26 @@ from dotenv import load_dotenv
 
 load_dotenv(Path(__file__).parents[2] / ".env")
 
-MODEL = "claude-sonnet-4-6"
+MODEL = "claude-opus-4-8"
 
-_SYSTEM = """You are a financial analyst assistant explaining knowledge graph query results.
-Write exactly 2-3 sentences. Be specific — name companies, executives, and events from the data.
-Always end with one sentence on why a keyword/vector search could NOT have produced this answer
-(it cannot compose multi-hop relational chains). Be concise and direct. No bullet points."""
+_SYSTEM = """You are a financial analyst answering a question using ONLY a knowledge-graph traversal.
+
+You are given:
+  - the user's question
+  - a numbered list of FACTS, each a graph edge: [n] SOURCE —RELATION→ TARGET
+  - the raw result rows (dates, titles, event descriptions) backing those edges
+
+Rules:
+  - Answer the question directly, in 2-4 sentences.
+  - Support every claim with a bracket citation to the fact(s) that establish it, e.g. "NVDA supplies Microsoft [3]".
+  - Use ONLY the given facts and rows. Do not add companies, executives, events, or relationships that are not present.
+  - If the facts are insufficient to answer, say so plainly — do not fill the gap with outside knowledge.
+  - End with one sentence on why a keyword/vector search could not have composed this multi-hop chain.
+Be concise and direct. No bullet points, no preamble."""
 
 
-def explain(question: str, results: list[dict], query_type: str = "") -> str:
+
+def explain(question: str, results: list[dict], query_type: str = "", triples=None) -> str:
     """
     Generate a plain-English explanation of graph query results.
 
@@ -36,9 +47,13 @@ def explain(question: str, results: list[dict], query_type: str = "") -> str:
     Returns:
         2-3 sentence explanation string.
     """
+    triples = triples or []
+
     if not results:
         return "The query returned no results. This may mean the relevant nodes or edges are not yet in the graph, or the date filters do not match the ingested data."
-
+    if not triples:
+        return "The query returned rows but no connected relationship chain to cite, so a grounded multi-hop answer cannot be composed from this result."
+    
     api_key = os.getenv("ANTHROPIC_API_KEY", "")
     if not api_key:
         try:
@@ -51,26 +66,36 @@ def explain(question: str, results: list[dict], query_type: str = "") -> str:
 
     client = anthropic.Anthropic(api_key=api_key)
 
+    # Numbered fact list — the [n] anchors the citations map back to.
+    facts_text = "\n".join(
+        f"[{i}] {src} —{rel}→ {tgt}"
+        for i, (src, tgt, rel) in enumerate(triples, start=1)
+    )
+
     # Summarise results — cap at 10 rows to keep prompt short
     sample = results[:10]
     results_text = "\n".join(
         ", ".join(f"{k}: {v}" for k, v in row.items() if v is not None)
         for row in sample
     )
+    
     if len(results) > 10:
         results_text += f"\n… and {len(results) - 10} more rows."
 
     user_content = (
         f"Question: {question}\n\n"
         f"Query type: {query_type}\n\n"
-        f"Results ({len(results)} rows):\n{results_text}"
+        f"Facts (graph edges — cite these by number):\n{facts_text}\n\n"
+        f"Results rows ({len(results)} total):\n{results_text}"
     )
 
     message = client.messages.create(
         model=MODEL,
-        max_tokens=256,
+        max_tokens=600,
         system=_SYSTEM,
         messages=[{"role": "user", "content": user_content}],
     )
 
-    return message.content[0].text.strip()
+    # First text block — content[0] may be a ThinkingBlock on models with
+    # adaptive thinking on by default, so don't assume index 0.
+    return next(b.text for b in message.content if b.type == "text").strip()
