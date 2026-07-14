@@ -15,10 +15,15 @@ python-dotenv==1.2.2
 requests==2.34.2
 
 # Vector-search stack — pin torch + torchvision as a matched pair so Cloud
-# installs torchvision (transformers imports it at load). Heavy (~750MB torch)
-# but required: sentence_transformers loads at app import.
+# installs torchvision (transformers imports it at load).
+# On Linux (Streamlit Cloud) use CPU-only wheels: the default PyPI torch is the
+# CUDA build (~2GB with nvidia deps) — useless on a CPU host, slow to install,
+# and heavy enough to risk OOM restarts. On macOS the plain wheels are already CPU.
+--extra-index-url https://download.pytorch.org/whl/cpu
 chromadb==1.5.9
 sentence-transformers==5.6.0
 transformers==5.12.1
-torch==2.12.1
-torchvision==0.27.1
+torch==2.12.1+cpu; sys_platform == "linux"
+torchvision==0.27.1+cpu; sys_platform == "linux"
+torch==2.12.1; sys_platform == "darwin"
+torchvision==0.27.1; sys_platform == "darwin"

@@ -6,6 +6,7 @@ Layout:
   Main    — two columns: Ontology Reasoning + traversal graph (left) | Vector Search (right)
 """
 
+import os
 import sys
 from pathlib import Path
 import json
@@ -13,6 +14,15 @@ import json
 import pandas as pd
 import streamlit as st
 import streamlit.components.v1 as components
+
+# Authenticate Hugging Face Hub downloads (sentence-transformers model pull).
+# The HF library reads the HF_TOKEN env var — st.secrets isn't visible to it,
+# so bridge the secret into the environment before the model ever loads.
+try:
+    if "HF_TOKEN" in st.secrets:
+        os.environ.setdefault("HF_TOKEN", st.secrets["HF_TOKEN"])
+except Exception:
+    pass  # no secrets file locally — .env / unauthenticated download still works
 
 # ---------------------------------------------------------------------------
 # Inline JS bundles — loaded once at startup, embedded in the HTML template
@@ -27,6 +37,17 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from src.query.router import run, run_raw, query_labels
 from src.search.retriever import search
+
+
+@st.cache_resource(show_spinner="Warming up vector search (first boot only) …")
+def _warm_vector_search() -> bool:
+    """Load the sentence-transformers model and build/open the ChromaDB index
+    once at container start, so the first user query doesn't pay the cold-start
+    cost (HF model download + embedding 91 snippets) mid-search."""
+    search("warmup", top_k=1)
+    return True
+
+
 # ---------------------------------------------------------------------------
 # Page config
 # ---------------------------------------------------------------------------
@@ -36,6 +57,10 @@ st.set_page_config(
     page_icon="⬡",
     layout="wide",
 )
+
+# Pay the vector-search cold start (HF model download + Chroma index build)
+# once at container boot, not during the first user query.
+_warm_vector_search()
 
 st.session_state.setdefault("triples", [])
 
