@@ -49,3 +49,4 @@ data/raw/sample_articles.json
 data/processed/
 
 FULL_APP_TODO.md
+requirements.full-freeze.txt.bak
