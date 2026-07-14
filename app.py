@@ -534,7 +534,7 @@ with qc3:
 
 with qc4:
     st.markdown("<div style='height:28px'></div>", unsafe_allow_html=True)
-    run_btn = st.button("Run", type="primary", use_container_width=True)
+    run_btn = st.button("Run", type="primary", width='stretch')
 
 st.markdown("</div>", unsafe_allow_html=True)
 
@@ -665,7 +665,7 @@ if run_btn and nl_question:
         with st.container(border=True):
             st.caption("Cypher over Neo4j — composes the full multi-hop chain.")
             if results:
-                st.dataframe(pd.DataFrame(results), hide_index=True, use_container_width=True)
+                st.dataframe(pd.DataFrame(results), hide_index=True, width='stretch')
                 st.caption(f"{len(results)} rows · {len(triples)} edges · {graph_label}")
             else:
                 st.info("No results — check the graph is loaded and date filters match.")
