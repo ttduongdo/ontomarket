@@ -238,9 +238,10 @@ Before the alias fix, `V-recall` was pinned at 0% everywhere (snippets say "Nvid
 - [ ] Results table is a **snapshot** — re-running the benchmark with a different `top_k` will shift the numbers; update the table if that happens
 
 ### F2. Results doc
-- [ ] Write `docs/results.md` with 3–4 concrete worked examples
-- [ ] Each example: question → vector output (screenshot or quote) → graph output → explanation
-- [ ] Link from README
+- [x] Wrote `docs/results.md` with 3 worked examples (hero 4-hop, reverse-supply 2-hop, competitor-scan 2-hop)
+- [x] Each: question → real vector snippets (with sim scores) → real graph triples → the actual synthesized cited answer → "why graph wins". **All output verbatim from live runs** (Neo4j + ChromaDB + Claude), not illustrative — generated via a scratchpad script that ran the real pipeline.
+- [x] Linked from README (Results section)
+- [ ] Snapshot caveat (same as F1): the quoted rows/answers reflect the 2026-07 dataset; regenerate if the graph changes materially.
 
 ### F3. Company-specific framing
 - [ ] Write 4 short positioning blurbs (not in the repo — use when reaching out):
@@ -250,15 +251,50 @@ Before the alias fix, `V-recall` was pinned at 0% everywhere (snippets say "Nvid
   - [ ] **Neo4j:** raw graph modeling depth — Cypher traversals, schema design, constraint enforcement; built on their product for a real use case
 
 ### F4. Deployment
-- [x] Secrets template ready for Streamlit Cloud (`.streamlit/secrets.toml.example` has Aura URI, Neo4j creds, Anthropic key)
-- [ ] Confirm actual deployment happened — latest commit is titled "deploy updates" but no live URL or Docker/Aura config confirmed in-repo; verify the app is actually reachable
-- [ ] Use Neo4j Aura free tier (500MB) as the cloud graph backend — switch `NEO4J_URI` in `.env`
-- [ ] Test the deployed app end-to-end before sharing the link
+- [x] Secrets template ready for Streamlit Cloud (`.streamlit/secrets.toml.example` — 4 keys, matches what code reads)
+- [x] **Fixed a real deploy blocker:** `requirements.txt` (a 359-line freeze) was MISSING `neo4j`, `chromadb`, and `sentence-transformers` — the app ran locally (venv had them) but a fresh Streamlit Cloud deploy would crash on `import neo4j`. Added `neo4j==6.2.0`, `chromadb==1.5.9`, `sentence-transformers==5.6.0`.
+- [x] Confirmed ChromaDB is deploy-safe: `chroma_db/` gitignored but `retriever.py` auto-rebuilds from the committed `vector_snippets.json` on first run. Vector search needs no external infra.
+- [x] Wrote a "Deploying" section in README (provision Neo4j → seed via ingest → set secrets → deploy, + the asleep-graph and manual-seed gotchas)
+- [x] **Backend decision:** Neo4j Aura Free is expiring — chose to KEEP Neo4j and self-host free (Fly.io always-on preferred over sleep-prone Render/Railway) rather than swap to Kuzu/NetworkX. Zero code changes; preserves the "real Cypher over Neo4j" thesis + resume bullet.
+- [ ] **Yours (can't automate):** provision the replacement Neo4j Community instance, run `src/graph/ingest.py` against it to seed the 20/48/75 graph, set `NEO4J_URI`+creds in Streamlit Cloud Secrets, wake/redeploy the app, verify a live query end-to-end before sharing the link.
 
 ### F5. Demo video
 - [ ] Record a 90-second walkthrough: thesis → hero query → graph result vs. vector result → traversal subgraph
 - [ ] Upload to YouTube (unlisted) or Loom
 - [ ] Embed link in README as a fallback in case live demo has issues
+
+---
+
+## Track I — Migration off Streamlit (decided 2026-07-14)
+
+**Why:** Streamlit Cloud deploys were chronically fragile (macOS freeze poisoning, Python-version roulette, torch/torchvision breakage, sleep + cold-start re-downloads), and the approved graph-first redesign (full-bleed canvas globe, ⌘K spotlight, dim-to-traversal, scroll-emerge answer sheet) outgrows what Streamlit can render at all. Interactive mockup of the target design: https://claude.ai/code/artifact/a1b72823-8bd2-4e82-bca2-5a1acc70b077 (built with the real 84-node/75-edge graph; elastic node drag, click-to-focus neighborhood, clickable relationship legend, all 5 presets wired with verified answers).
+
+**Decided stack:** FastAPI backend + React front-end (Vite recommended over Next — SPA, no SSR need, static build). `src/` stays UNTOUCHED — all verified H1/H2 logic (router, nl_to_cypher, explainer, entity_seeder, retriever) wraps behind ~4 endpoints.
+
+### I1. FastAPI layer — DONE 2026-07-14, live-verified
+- [x] `api/main.py`: `GET /graph` (84 nodes/75 edges from data/processed — renders even if Neo4j is down), `GET /presets`, `POST /query`, `POST /vector`. src/ untouched; fastapi==0.139.2 + uvicorn==0.49.0 pinned.
+- [x] CORS for Vite dev (:5173) only, with a comment to tighten at deploy — /query spends Anthropic credits
+- [x] Warm-up in FastAPI lifespan (model + Chroma at boot). **Note:** uvicorn doesn't accept connections until lifespan completes (~20s+) — Docker healthcheck must allow for this.
+- [x] Live-verified: preset hero → 59 rows / 25 triples / cited answer, all citations valid. Freeform → anchors seeded (7 tickers), valid targeted Cypher generated, 4 rows returned, insufficient-evidence guard fired correctly.
+### I1b. Freeform triples gap (deferred — building I2 first)
+- [ ] Freeform-generated Cypher returns rows but often **0 triples**: `router._infer_triples()` only recognizes the 5 preset queries' column names, so novel column aliases → no triples → no cited answer + nothing to highlight on the globe. (The insufficient-evidence guard fires correctly, but a freeform query that "works" still lights up nothing.)
+- [ ] Fix options: (a) teach `translate()` to emit a column→triple mapping alongside the generated Cypher, or (b) generalize `_infer_triples` to detect (source, target) node columns heuristically. (a) is more reliable.
+- [ ] **Sequencing:** front-end (I2) is being built first against **preset** queries, which return triples fine. This gap only bites the freeform path — so the globe's dim-to-traversal is fully demoable on presets while this is open. Resolve before freeform is promoted as a headline feature.
+
+### I2. React front-end (Vite) — DONE 2026-07-14 (globe checkpoint passed, full stack live-verified)
+- [x] `web/` = Vite + React + TS. Files: `api.ts` (typed client, `/api/*` via dev proxy), `Graph.tsx` (canvas force-sim in a rAF loop against refs — never React state), `Spotlight.tsx`, `AnswerSheet.tsx`, `App.tsx` (lifecycle + highlight state), `index.css`.
+- [x] Globe ported: force sim, pan/zoom/pinch, elastic node drag+snapback, click-to-focus neighborhood, clickable relationship legend. **User confirmed globe feel passes.**
+- [x] Spotlight (⌘K): preset list + freeform (a no-match query becomes an "Ask freeform" NL→Cypher option); ↑↓/⏎/esc keyboard nav.
+- [x] Dim-to-traversal wired to real `triples`: App maps triple rel-names (incl. suffixed `EXECUTIVE_OF (former)`) back to edge codes to light the exact path. Highlight precedence: query result > node focus > legend filter.
+- [x] Scroll-emerge answer sheet: serif cited answer (coral `[n]` superscripts), retrieved-entities line, vector column (parallel `/vector` call fills as it returns) + cited-triples column. Scroll-to-top dismisses back to graph.
+- [x] Loading choreography: staged copy (retrieving → traversing → synthesizing) on a spinner toast while the single `/query` request runs; error state clickable to dismiss. Vector search fires in parallel.
+- [x] Live-verified through the Vite proxy: hero preset → 59 rows / 25 triples / cited answer, all citations map to triples, rel-types match the highlight matcher. Build (`npm run build`) passes clean. `.gitignore` covers `web/node_modules` + `web/dist`.
+- [ ] Not browser-tested by me (no browser in the loop) — user should click through: run a preset, watch dim-to-traversal, scroll the answer sheet, try freeform (highlighting limited per I1b).
+
+### I3. Deploy
+- [ ] One Docker container (FastAPI serves the built static front-end) on HF Spaces (16GB free, local HF model cache kills the cold-start download) — or split: front-end on Vercel, API on Spaces/Fly
+- [ ] Neo4j backend still required (Track F4 decision: self-hosted Community, Fly.io preferred)
+- [ ] Retire `app.py` + Streamlit Cloud app once the new deploy passes the same live checks (hero query end-to-end with citations)
 
 ---
 
@@ -283,12 +319,17 @@ Track G (G1–G4: unit tests, matching-quality fix, historical tracking, ground-
 
 ## Resume bullet (update as tracks complete)
 
-**OntoMarket** | Python · Neo4j · Cypher · Claude API · ChromaDB · sentence-transformers · Streamlit
+**OntoMarket — GraphRAG for multi-hop financial reasoning** | Python · Neo4j · Cypher · Claude API · ChromaDB · Streamlit
 
-- Designed a financial ontology with 6 entity types and 8 relationship types; built a graph in Neo4j over 20 AI infrastructure companies with verified executive moves, supply-chain edges, and regulatory events sourced from SEC filings and Wikidata
-- Built an LLM-based extraction pipeline (Claude API) converting unstructured news into structured graph edges with confidence scoring and entity resolution
-- Built a natural-language-to-Cypher query layer with graceful fallback, plus an eval harness benchmarking graph vs. vector retrieval on scored questions
-- Demonstrated that multi-hop Cypher traversals answer relational financial questions (supply chain exposure given executive movement + competitor relationships) that pure vector search cannot compose correctly
+- Built a **GraphRAG system** that answers relational financial questions by retrieving entities via vector search, traversing a Neo4j knowledge graph, and synthesizing grounded natural-language answers where **every claim cites the specific graph edge** that supports it — verifiable reasoning, not plausible-sounding prose
+- Designed a financial ontology (6 entity types, 8 relationship types) over 20 AI-infrastructure companies with verified executive moves, supply-chain links, and regulatory events sourced from SEC filings and Wikidata; ingestion, constraints, and Cypher traversals in Neo4j
+- Implemented a natural-language→Cypher layer seeded by vector-retrieved entities (retrieve-then-traverse), with graceful fallback to preset queries on invalid generation
+- Built an eval harness benchmarking graph vs. vector retrieval; showed vector search **never composes the multi-hop chain** (0% chain recall across every benchmark question) even when it surfaces the individual facts — quantifying why graph reasoning wins on relational questions
+- *(supporting)* LLM extraction pipeline (Claude) converting unstructured news into structured edges with confidence scoring and entity resolution
+
+<!-- Notes: lead with GraphRAG + citations (strongest, most current framing; the buzzword Prometheux/Glean screen for). "0% chain recall" is the real benchmark number — true for the 5-question eval set, so say "every benchmark question" not "thousands". If cutting to 4 bullets, drop the (supporting) extraction line first. -->oloo
+
+**Blurb (one-liner):** GraphRAG over a financial ontology — vector search retrieves the entities, Neo4j Cypher traversals compose the multi-hop chain, and Claude writes a grounded answer citing the exact edges. Pure vector search never composes the chain (0% chain recall); the graph does.
 
 ## Pipeline
 question

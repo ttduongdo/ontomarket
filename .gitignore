@@ -50,3 +50,8 @@ data/processed/
 
 FULL_APP_TODO.md
 requirements.full-freeze.txt.bak
+
+# web front-end (Vite)
+web/node_modules/
+web/dist/
+web/*.tsbuildinfo

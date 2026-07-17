@@ -140,6 +140,39 @@ python -m src.eval.diff_history --latest-two   # diff two saved runs
 venv/bin/python -m pytest tests/ -v
 ```
 
+## Deploying
+
+The app runs on Streamlit Community Cloud. ChromaDB rebuilds itself from
+`data/raw/vector_snippets.json` on first run (the `chroma_db/` dir is gitignored), so
+**vector search needs no external infra**. The only external dependency is Neo4j.
+
+**1. Stand up a Neo4j instance.** Any reachable Neo4j works — a managed AuraDB free
+instance, or self-hosted Neo4j Community on a free container host (Fly.io keeps it
+always-on; Render/Railway free tiers sleep on inactivity, which is a poor fit for a
+share-a-link demo). You need its Bolt URI and credentials.
+
+**2. Seed the graph.** A fresh Neo4j instance is empty. Ingestion is idempotent
+(`MERGE`, not `CREATE`), so point your `.env` at the new instance and run:
+
+```bash
+venv/bin/python -m src.data.merge      # raw → processed (if not already built)
+venv/bin/python src/graph/ingest.py    # loads 20 companies, 48 persons, 75 edges
+```
+
+**3. Set secrets on Streamlit Cloud.** In the app's **Settings → Secrets**, add the
+same four keys as local `.env` (`NEO4J_URI`, `NEO4J_USER`, `NEO4J_PASSWORD`,
+`ANTHROPIC_API_KEY`) — the app reads env first, then falls back to `st.secrets`.
+
+**4. Deploy / wake.** Push to the connected GitHub repo; Streamlit redeploys
+automatically. A sleeping app (Community Cloud sleeps after ~7 days idle) is woken from
+the dashboard.
+
+> **Gotchas:** (a) if the Neo4j instance is asleep, the app boots but every query
+> errors with a connection failure — wake the graph *before* the app. (b) `chroma_db/`,
+> the local `.env`, and `data/processed/` are gitignored; the deploy rebuilds Chroma
+> from the tracked snippets file, but the **graph must be seeded manually** (step 2) —
+> it is not repopulated automatically on deploy.
+
 ## Results
 
 Five benchmark questions, each traversing a relationship chain no single document
@@ -164,6 +197,10 @@ cites the exact edges it used.
 > Recall numbers depend on `top_k` — see `data/eval/` for the exact run. Entity
 > matching is alias-aware (a snippet saying "Nvidia" counts as an "NVDA" mention),
 > so the vector baseline is scored generously.
+
+**Worked examples:** [`docs/results.md`](docs/results.md) walks three real queries
+side by side — the exact vector snippets, the graph traversal, and the cited answer
+OntoMarket synthesized (all verbatim from live runs).
 
 ## Why this matters
 
