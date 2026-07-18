@@ -291,10 +291,40 @@ Before the alias fix, `V-recall` was pinned at 0% everywhere (snippets say "Nvid
 - [x] Live-verified through the Vite proxy: hero preset → 59 rows / 25 triples / cited answer, all citations map to triples, rel-types match the highlight matcher. Build (`npm run build`) passes clean. `.gitignore` covers `web/node_modules` + `web/dist`.
 - [ ] Not browser-tested by me (no browser in the loop) — user should click through: run a preset, watch dim-to-traversal, scroll the answer sheet, try freeform (highlighting limited per I1b).
 
-### I3. Deploy
-- [ ] One Docker container (FastAPI serves the built static front-end) on HF Spaces (16GB free, local HF model cache kills the cold-start download) — or split: front-end on Vercel, API on Spaces/Fly
-- [ ] Neo4j backend still required (Track F4 decision: self-hosted Community, Fly.io preferred)
-- [ ] Retire `app.py` + Streamlit Cloud app once the new deploy passes the same live checks (hero query end-to-end with citations)
+### I3. Deploy — topology DECIDED 2026-07-14 (revised: HF Docker Spaces went PRO-only $9/mo)
+
+**Topology:** front-end on **Vercel** (free, always-on) · API + Neo4j both on **Fly.io** (always-on, ~$2-5/mo) · ChromaDB inside the API container · Claude API remote.
+```
+Vercel (free, always-on)     Fly.io (backend, always-on)
+┌──────────────────┐         ┌──────────────────────┐   ┌──────────┐
+│ React static site │──fetch─▶│ FastAPI + Chroma+torch│──▶│ neo4j:   │
+│ (globe UI, CDN)   │  CORS   │ (VITE_API_URL target) │   │ community│
+└──────────────────┘         └──────────────────────┘   └──────────┘
+```
+Why split: HF Docker Spaces are now PRO-only; Static Spaces can't run our Python backend. Vercel keeps the *first impression* (globe landing) bulletproof-free + instant. Fly runs the real backend always-on so queries stay fast (no cold-wake), one vendor for API+Neo4j.
+
+**Code changes this forces (do these before deploy — I can build/verify locally):**
+- [ ] **CORS**: split hosting = cross-origin browser calls. Replace the dev-only CORS in `api/main.py` with prod config allowing the Vercel domain (env-driven allowlist).
+- [ ] **Env-based API URL**: front-end must call the Fly API in prod, the Vite proxy in dev. Add `VITE_API_URL` (empty in dev → uses `/api` proxy; set to the Fly URL in Vercel build env). Update `api.ts`.
+- [ ] **Dockerfile** for the API (python + the pinned torch-CPU stack; runs uvicorn on Fly's `$PORT`). Front-end is NOT in this image (it's on Vercel) — just `api/` + `src/` + `data/`.
+- [ ] **fly.toml** for the API machine (always-on = `min_machines_running=1`, enough RAM for torch ~2GB); startup grace for the ~20s model warm-up.
+
+**Fly — API machine:**
+- [ ] `fly launch` from the Dockerfile; set secrets (NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD, ANTHROPIC_API_KEY, HF_TOKEN)
+
+**Fly — Neo4j machine:**
+- [ ] `fly launch` a `neo4j:community` machine (persistent volume, `NEO4J_AUTH`, expose bolt); grab the internal/`bolt+s://` URI for the API's NEO4J_URI
+- [ ] Seed: point local `.env` at it → `venv/bin/python src/graph/ingest.py` (idempotent; 20/48/75). Graph is NOT auto-populated — document as a deploy step.
+
+**Vercel — front-end:**
+- [ ] Import the GitHub repo, root = `web/`, framework Vite; set `VITE_API_URL` = Fly API URL in project env; deploy
+
+**Cutover:**
+- [ ] Live-verify: hero query end-to-end (citations, dim-to-traversal, vector column) against the deployed stack
+- [x] Retired `app.py` → replaced with a tiny redirect stub (meta-refresh + visible link → https://ontomarket.vercel.app). Reason: old resumes list the Streamlit URL, so it must forward. Root `requirements.txt` slimmed to just `streamlit` (stub boots fast, can't hang on torch); full deps moved to `requirements-local.txt` (README updated). Former UI lives in git history + web/ + api/.
+- [ ] **Redeploy the Streamlit Cloud app** so the redirect goes live — push, then in the Streamlit dashboard confirm it rebuilds with the slim requirements (should boot in seconds now, not hang). The redirect only fires when that app can boot, so this must succeed before old links forward.
+- [ ] After the React stack is live on Vercel, confirm the old ontomarket.streamlit.app actually bounces to it end-to-end.
+- Note: cannot redirect at the DNS level — ontomarket.streamlit.app is Streamlit's subdomain, not user-owned (Vercel's TXT ownership verification will never pass for it). In-app meta-refresh is the only working forward.
 
 ---
 

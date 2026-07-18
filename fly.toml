@@ -1,0 +1,31 @@
+# Fly.io config for the OntoMarket API. `fly launch` may rename the app —
+# keep the [http_service] + [[vm]] shape; adjust `app` to your chosen name.
+
+app = "ontomarket-api"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  # Always-on: don't stop the machine on idle (keeps queries fast, no cold wake).
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+
+  # The model warm-up (lifespan) takes ~20s before uvicorn accepts traffic.
+  # Give health checks a generous grace so Fly doesn't kill the boot.
+  [[http_service.checks]]
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "60s"
+    method = "GET"
+    path = "/presets"
+
+[[vm]]
+  # torch + sentence-transformers need headroom; 2GB is the safe floor.
+  memory = "2gb"
+  cpus = 1
+  cpu_kind = "shared"

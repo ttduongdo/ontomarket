@@ -12,6 +12,7 @@ Run locally:
 """
 
 import json
+import os
 import sys
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -60,12 +61,16 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="OntoMarket API", lifespan=lifespan)
 
-# Dev CORS (Vite on :5173). In the single-container deploy the front-end is
-# served same-origin, so tighten or drop this before exposing publicly —
-# /query spends Anthropic credits.
+# CORS. Split hosting (Vercel front-end → Fly API) means cross-origin browser
+# calls, so the front-end origin must be allow-listed. Dev origins are always
+# permitted; add the deployed Vercel URL(s) via the CORS_ORIGINS env var
+# (comma-separated) on the Fly machine. /query spends Anthropic credits, so
+# this is an allowlist, never "*".
+_dev_origins = ["http://localhost:5173", "http://127.0.0.1:5173"]
+_env_origins = [o.strip() for o in os.getenv("CORS_ORIGINS", "").split(",") if o.strip()]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=_dev_origins + _env_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )

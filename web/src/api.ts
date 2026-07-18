@@ -47,7 +47,9 @@ export interface VectorHit {
   similarity: number;
 }
 
-const API = "/api";
+// Dev: VITE_API_URL unset → "/api" hits the Vite proxy (→ localhost:8000).
+// Prod (Vercel): VITE_API_URL = the Fly API origin, e.g. https://ontomarket-api.fly.dev
+const API = import.meta.env.VITE_API_URL || "/api";
 
 export async function fetchGraph(): Promise<GraphData> {
   const r = await fetch(`${API}/graph`);

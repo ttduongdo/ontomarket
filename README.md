@@ -93,8 +93,13 @@ flowchart LR
 ```bash
 python3.11 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements-local.txt
 ```
+
+> `requirements.txt` (root) is only the Streamlit **redirect stub**'s dep — the
+> old Streamlit app is retired and now forwards to the deployed React app. Local
+> development uses `requirements-local.txt`; the deployed API image uses
+> `requirements-api.txt`.
 
 Copy `.streamlit/secrets.toml.example` and fill in credentials, or create a `.env`:
 

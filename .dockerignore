@@ -1,0 +1,17 @@
+# Keep the build context small — only src/ api/ data/ + requirements-api.txt
+# are COPY'd; everything else is noise or would bloat/break the image.
+venv/
+web/
+chroma_db/
+.git/
+__pycache__/
+**/__pycache__/
+*.pyc
+.env
+.streamlit/
+app.py
+requirements.full-freeze.txt.bak
+docs/
+tests/
+data/eval/history/
+*.md
