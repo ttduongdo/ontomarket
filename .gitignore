@@ -49,6 +49,7 @@ data/raw/sample_articles.json
 data/processed/
 
 FULL_APP_TODO.md
+docs/
 requirements.full-freeze.txt.bak
 
 # web front-end (Vite)
