@@ -11,8 +11,7 @@ walking a live knowledge graph and writing a plain-English response where
 
 **[→ Try it live: ontomarket.vercel.app](https://ontomarket.vercel.app)**
 
-<!-- TODO: drop a screenshot or short GIF of the graph UI here, e.g.:
-![OntoMarket graph UI](docs/screenshot.png) -->
+<!-- TODO: drop a screenshot or short GIF of the graph UI here -->
 
 ### Why this is harder than it looks
 
@@ -44,6 +43,4 @@ so you can see the difference for yourself, live.
 ---
 
 Built with a Neo4j graph, Claude, and a small hand-curated dataset covering ~20
-AI-infrastructure companies. Architecture, local setup, and deployment notes
-are in [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md) for anyone who wants to dig
-into the source.
+AI-infrastructure companies.
