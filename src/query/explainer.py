@@ -27,7 +27,7 @@ You are given:
 
 Rules:
   - Answer the question directly, in 2-4 sentences.
-  - Support every claim with a bracket citation to the fact(s) that establish it, e.g. "NVDA supplies Microsoft [3]".
+  - Support every claim with a bracket citation to the fact(s) that establish it. Use ONE number per bracket — for a single supporting fact write "NVDA supplies Microsoft [3]"; for multiple facts, stack separate brackets like [1][7], never comma-separated inside one bracket (not "[1,7]").
   - Use ONLY the given facts and rows. Do not add companies, executives, events, or relationships that are not present.
   - If the facts are insufficient to answer, say so plainly — do not fill the gap with outside knowledge.
   - End with one sentence on why a keyword/vector search could not have composed this multi-hop chain.

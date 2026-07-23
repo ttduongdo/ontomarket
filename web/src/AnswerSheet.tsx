@@ -7,7 +7,9 @@ interface Props {
   onDismiss: () => void; // scrolled back to top → return to graph
 }
 
-// wrap [n] / [8][9] citation runs in coral mono superscripts
+// wrap [n] / [8][9] citation runs in coral mono superscripts.
+// explainer.py's prompt requires one number per bracket, stacked for
+// multiple facts (e.g. [1][7]), never comma-separated inside one bracket.
 function citeHtml(text: string): string {
   const esc = text
     .replace(/&/g, "&amp;")
