@@ -1,0 +1,34 @@
+# Fly.io config for self-hosted Neo4j Community — OntoMarket's graph backend.
+# `fly launch` may prompt to rename the app; keep it descriptive
+# (e.g. ontomarket-neo4j) so it's clearly paired with ontomarket-api.
+#
+# Deploy from THIS directory (neo4j-fly/), not the repo root — this app has
+# its own Dockerfile, separate from the API's.
+
+app = "ontomarket-neo4j"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+# Bolt only — internal, not exposed publicly. ontomarket-api reaches this
+# over Fly's private WireGuard network via the app's .internal hostname
+# (bolt://ontomarket-neo4j.internal:7687), never over the public internet.
+[[services]]
+  protocol = "tcp"
+  internal_port = 7687
+  # No [[services.ports]] with handlers = no public HTTPS/TCP exposure.
+
+  [services.concurrency]
+    type = "connections"
+    hard_limit = 50
+    soft_limit = 40
+
+[[mounts]]
+  source      = "neo4j_data"
+  destination = "/data"
+
+[[vm]]
+  memory   = "1gb"
+  cpu_kind = "shared"
+  cpus     = 1

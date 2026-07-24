@@ -411,5 +411,63 @@
       "event_id": "EVT-INTC-2024-foundry-msft",
       "impact": "positive"
     }
+  ],
+  "belongs_to": [
+    {
+      "company_ticker": "AAPL",
+      "sector_name": "Technology Hardware, Storage & Peripherals"
+    },
+    {
+      "company_ticker": "AMD",
+      "sector_name": "Semiconductors"
+    },
+    {
+      "company_ticker": "AVGO",
+      "sector_name": "Semiconductors"
+    },
+    {
+      "company_ticker": "CRM",
+      "sector_name": "Application Software"
+    },
+    {
+      "company_ticker": "GOOGL",
+      "sector_name": "Interactive Media & Services"
+    },
+    {
+      "company_ticker": "INTC",
+      "sector_name": "Semiconductors"
+    },
+    {
+      "company_ticker": "META",
+      "sector_name": "Interactive Media & Services"
+    },
+    {
+      "company_ticker": "MSFT",
+      "sector_name": "Systems Software"
+    },
+    {
+      "company_ticker": "NOW",
+      "sector_name": "Systems Software"
+    },
+    {
+      "company_ticker": "NVDA",
+      "sector_name": "Semiconductors"
+    },
+    {
+      "company_ticker": "ORCL",
+      "sector_name": "Application Software"
+    },
+    {
+      "company_ticker": "PLTR",
+      "sector_name": "Application Software"
+    },
+    {
+      "company_ticker": "QCOM",
+      "sector_name": "Semiconductors"
+    },
+    {
+      "company_ticker": "WDAY",
+      "sector_name": "Application Software"
+    }
   ]
 }

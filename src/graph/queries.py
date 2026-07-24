@@ -149,6 +149,28 @@ QUERIES: dict[str, dict] = {
         """,
         "params": {},
     },
+
+    "sector_peers": {
+        "label": "Sector benchmark — who else is in this sector?",
+        "description": (
+            "Which other companies should be benchmarked against a given "
+            "company, based on shared GICS sub-sector classification?"
+        ),
+        "cypher": """
+            MATCH (focus:Company {ticker: $ticker})-[:BELONGS_TO]->(sub:Sector)
+            MATCH (peer:Company)-[:BELONGS_TO]->(sub)
+            WHERE peer.ticker <> focus.ticker
+            OPTIONAL MATCH (sub)-[:SUB_SECTOR_OF]->(sector:Sector)
+            RETURN
+              focus.ticker  AS focus_company,
+              peer.ticker   AS peer,
+              peer.name     AS peer_name,
+              sub.name      AS sub_sector,
+              sector.name   AS sector
+            ORDER BY peer.ticker
+        """,
+        "params": {"ticker": "NVDA"},
+    },
 }
 
 
@@ -218,5 +240,10 @@ def _extract_triples(key: str, records: list[dict]) -> list[tuple]:
     elif key == "supply_chain_map":
         for r in records:
             add(g(r, "supplier"), g(r, "customer"), "SUPPLIES_TO")
+
+    elif key == "sector_peers":
+        for r in records:
+            add(g(r, "focus_company"), g(r, "sub_sector"),  "BELONGS_TO")
+            add(g(r, "peer"),          g(r, "sub_sector"),  "BELONGS_TO")
 
     return triples

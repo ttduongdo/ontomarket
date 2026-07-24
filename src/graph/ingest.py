@@ -37,6 +37,7 @@ CONSTRAINTS = [
     "CREATE CONSTRAINT company_ticker IF NOT EXISTS FOR (c:Company) REQUIRE c.ticker IS UNIQUE",
     "CREATE CONSTRAINT person_id IF NOT EXISTS FOR (p:Person) REQUIRE p.person_id IS UNIQUE",
     "CREATE CONSTRAINT event_id IF NOT EXISTS FOR (e:Event) REQUIRE e.event_id IS UNIQUE",
+    "CREATE CONSTRAINT sector_name IF NOT EXISTS FOR (s:Sector) REQUIRE s.name IS UNIQUE",
 ]
 
 INDEXES = [
@@ -96,6 +97,20 @@ def load_events(tx, events: list[dict]) -> int:
     return result.single()["n"]
 
 
+def load_sectors(tx, sectors: list[dict]) -> int:
+    result = tx.run(
+        """
+        UNWIND $rows AS row
+        MERGE (s:Sector {name: row.name})
+        SET s.level       = row.level,
+            s.parent_name = row.parent_name
+        RETURN count(*) AS n
+        """,
+        rows=sectors,
+    )
+    return result.single()["n"]
+
+
 # ---------------------------------------------------------------------------
 # Edge loaders
 # ---------------------------------------------------------------------------
@@ -148,6 +163,35 @@ def load_executive_of(tx, edges: list[dict]) -> int:
     return result.single()["n"]
 
 
+def load_belongs_to(tx, edges: list[dict]) -> int:
+    result = tx.run(
+        """
+        UNWIND $rows AS row
+        MATCH (c:Company {ticker: row.company_ticker})
+        MATCH (s:Sector  {name:   row.sector_name})
+        MERGE (c)-[:BELONGS_TO]->(s)
+        RETURN count(*) AS n
+        """,
+        rows=edges,
+    )
+    return result.single()["n"]
+
+
+def link_sector_hierarchy(tx) -> int:
+    """Connect each sub_sector Sector node to its parent sector Sector node,
+    so 'companies in the same sector as X' can traverse sub_sector -> sector
+    without relying on the parent_name property alone."""
+    result = tx.run(
+        """
+        MATCH (sub:Sector {level: 'sub_sector'})
+        MATCH (parent:Sector {level: 'sector', name: sub.parent_name})
+        MERGE (sub)-[:SUB_SECTOR_OF]->(parent)
+        RETURN count(*) AS n
+        """
+    )
+    return result.single()["n"]
+
+
 def load_affected_by(tx, edges: list[dict]) -> int:
     result = tx.run(
         """
@@ -191,6 +235,11 @@ def main() -> None:
     persons   = persons_data["persons"]
     events    = events_data["events"]
 
+    # Sectors are additive (workstream 1.2) — sectors.json may not exist yet
+    # on an older data checkout, so degrade gracefully rather than fail.
+    sectors_path = PROC / "sectors.json"
+    sectors = json.loads(sectors_path.read_text())["sectors"] if sectors_path.exists() else []
+
     driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
 
     with driver.session() as session:
@@ -208,6 +257,15 @@ def main() -> None:
         print(f"Loading {len(events)} Event nodes …")
         n = session.execute_write(load_events, events)
         print(f"  Merged {n} events")
+
+        if sectors:
+            print(f"Loading {len(sectors)} Sector nodes …")
+            n = session.execute_write(load_sectors, sectors)
+            print(f"  Merged {n} sectors")
+
+            print("Linking sub_sector -> sector hierarchy …")
+            n = session.execute_write(link_sector_hierarchy)
+            print(f"  Merged {n} SUB_SECTOR_OF edges")
 
         cw = edges_data.get("competes_with", [])
         print(f"Loading {len(cw)} COMPETES_WITH edges …")
@@ -228,6 +286,12 @@ def main() -> None:
         print(f"Loading {len(ab)} AFFECTED_BY edges …")
         n = session.execute_write(load_affected_by, ab)
         print(f"  Merged {n} edges")
+
+        bt = edges_data.get("belongs_to", [])
+        if bt:
+            print(f"Loading {len(bt)} BELONGS_TO edges …")
+            n = session.execute_write(load_belongs_to, bt)
+            print(f"  Merged {n} edges")
 
     driver.close()
     print("\nIngestion complete.")

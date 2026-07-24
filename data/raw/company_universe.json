@@ -1,0 +1,1571 @@
+{
+  "_meta": {
+    "source": "https://raw.githubusercontent.com/datasets/s-and-p-500-companies/main/data/constituents.csv",
+    "sectors": [
+      "Communication Services",
+      "Financials",
+      "Information Technology"
+    ],
+    "count": 173,
+    "note": "Committed company universe \u2014 regenerate with build_universe.py. GICS sector is the classification of record; CIK feeds sec_form4."
+  },
+  "companies": [
+    {
+      "ticker": "AAPL",
+      "name": "Apple Inc.",
+      "cik": 320193,
+      "sector": "Information Technology",
+      "sub_industry": "Technology Hardware, Storage & Peripherals",
+      "founded": "1977",
+      "hq": "Cupertino, California"
+    },
+    {
+      "ticker": "ACGL",
+      "name": "Arch Capital Group",
+      "cik": 947484,
+      "sector": "Financials",
+      "sub_industry": "Property & Casualty Insurance",
+      "founded": "1995",
+      "hq": "Hamilton, Bermuda"
+    },
+    {
+      "ticker": "ACN",
+      "name": "Accenture",
+      "cik": 1467373,
+      "sector": "Information Technology",
+      "sub_industry": "IT Consulting & Other Services",
+      "founded": "1989",
+      "hq": "Dublin, Ireland"
+    },
+    {
+      "ticker": "ADBE",
+      "name": "Adobe Inc.",
+      "cik": 796343,
+      "sector": "Information Technology",
+      "sub_industry": "Application Software",
+      "founded": "1982",
+      "hq": "San Jose, California"
+    },
+    {
+      "ticker": "ADI",
+      "name": "Analog Devices",
+      "cik": 6281,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductors",
+      "founded": "1965",
+      "hq": "Wilmington, Massachusetts"
+    },
+    {
+      "ticker": "ADSK",
+      "name": "Autodesk",
+      "cik": 769397,
+      "sector": "Information Technology",
+      "sub_industry": "Application Software",
+      "founded": "1982",
+      "hq": "San Francisco, California"
+    },
+    {
+      "ticker": "AFL",
+      "name": "Aflac",
+      "cik": 4977,
+      "sector": "Financials",
+      "sub_industry": "Life & Health Insurance",
+      "founded": "1955",
+      "hq": "Columbus, Georgia"
+    },
+    {
+      "ticker": "AIG",
+      "name": "American International Group",
+      "cik": 5272,
+      "sector": "Financials",
+      "sub_industry": "Multi-line Insurance",
+      "founded": "1919",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "AIZ",
+      "name": "Assurant",
+      "cik": 1267238,
+      "sector": "Financials",
+      "sub_industry": "Multi-line Insurance",
+      "founded": "1892",
+      "hq": "Atlanta, Georgia"
+    },
+    {
+      "ticker": "AJG",
+      "name": "Arthur J. Gallagher & Co.",
+      "cik": 354190,
+      "sector": "Financials",
+      "sub_industry": "Insurance Brokers",
+      "founded": "1927",
+      "hq": "Rolling Meadows, Illinois"
+    },
+    {
+      "ticker": "AKAM",
+      "name": "Akamai Technologies",
+      "cik": 1086222,
+      "sector": "Information Technology",
+      "sub_industry": "Internet Services & Infrastructure",
+      "founded": "1998",
+      "hq": "Cambridge, Massachusetts"
+    },
+    {
+      "ticker": "ALL",
+      "name": "Allstate",
+      "cik": 899051,
+      "sector": "Financials",
+      "sub_industry": "Property & Casualty Insurance",
+      "founded": "1931",
+      "hq": "Northbrook, Illinois"
+    },
+    {
+      "ticker": "AMAT",
+      "name": "Applied Materials",
+      "cik": 6951,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductor Materials & Equipment",
+      "founded": "1967",
+      "hq": "Santa Clara, California"
+    },
+    {
+      "ticker": "AMD",
+      "name": "Advanced Micro Devices",
+      "cik": 2488,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductors",
+      "founded": "1969",
+      "hq": "Santa Clara, California"
+    },
+    {
+      "ticker": "AMP",
+      "name": "Ameriprise Financial",
+      "cik": 820027,
+      "sector": "Financials",
+      "sub_industry": "Asset Management & Custody Banks",
+      "founded": "1894",
+      "hq": "Minneapolis, Minnesota"
+    },
+    {
+      "ticker": "ANET",
+      "name": "Arista Networks",
+      "cik": 1596532,
+      "sector": "Information Technology",
+      "sub_industry": "Communications Equipment",
+      "founded": "2004",
+      "hq": "Santa Clara, California"
+    },
+    {
+      "ticker": "AON",
+      "name": "Aon plc",
+      "cik": 315293,
+      "sector": "Financials",
+      "sub_industry": "Insurance Brokers",
+      "founded": "1982 (1919)",
+      "hq": "London, United Kingdom"
+    },
+    {
+      "ticker": "APH",
+      "name": "Amphenol",
+      "cik": 820313,
+      "sector": "Information Technology",
+      "sub_industry": "Electronic Components",
+      "founded": "1932",
+      "hq": "Wallingford, Connecticut"
+    },
+    {
+      "ticker": "APO",
+      "name": "Apollo Global Management",
+      "cik": 1858681,
+      "sector": "Financials",
+      "sub_industry": "Asset Management & Custody Banks",
+      "founded": "1990",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "APP",
+      "name": "AppLovin",
+      "cik": 1751008,
+      "sector": "Information Technology",
+      "sub_industry": "Application Software",
+      "founded": "2012",
+      "hq": "Palo Alto, California"
+    },
+    {
+      "ticker": "ARES",
+      "name": "Ares Management",
+      "cik": 1176948,
+      "sector": "Financials",
+      "sub_industry": "Asset Management & Custody Banks",
+      "founded": "1977",
+      "hq": "Los Angeles, California"
+    },
+    {
+      "ticker": "AVGO",
+      "name": "Broadcom",
+      "cik": 1730168,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductors",
+      "founded": "1961",
+      "hq": "Palo Alto, California"
+    },
+    {
+      "ticker": "AXP",
+      "name": "American Express",
+      "cik": 4962,
+      "sector": "Financials",
+      "sub_industry": "Consumer Finance",
+      "founded": "1850",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "BAC",
+      "name": "Bank of America",
+      "cik": 70858,
+      "sector": "Financials",
+      "sub_industry": "Diversified Banks",
+      "founded": "1998 (1923 / 1874)",
+      "hq": "Charlotte, North Carolina"
+    },
+    {
+      "ticker": "BEN",
+      "name": "Franklin Resources",
+      "cik": 38777,
+      "sector": "Financials",
+      "sub_industry": "Asset Management & Custody Banks",
+      "founded": "1947",
+      "hq": "San Mateo, California"
+    },
+    {
+      "ticker": "BLK",
+      "name": "BlackRock",
+      "cik": 2012383,
+      "sector": "Financials",
+      "sub_industry": "Asset Management & Custody Banks",
+      "founded": "1988",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "BNY",
+      "name": "BNY Mellon",
+      "cik": 1390777,
+      "sector": "Financials",
+      "sub_industry": "Asset Management & Custody Banks",
+      "founded": "1784",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "BRK.B",
+      "name": "Berkshire Hathaway",
+      "cik": 1067983,
+      "sector": "Financials",
+      "sub_industry": "Multi-Sector Holdings",
+      "founded": "1839",
+      "hq": "Omaha, Nebraska"
+    },
+    {
+      "ticker": "BRO",
+      "name": "Brown & Brown",
+      "cik": 79282,
+      "sector": "Financials",
+      "sub_industry": "Insurance Brokers",
+      "founded": "1939",
+      "hq": "Daytona Beach, Florida"
+    },
+    {
+      "ticker": "BX",
+      "name": "Blackstone Inc.",
+      "cik": 1393818,
+      "sector": "Financials",
+      "sub_industry": "Asset Management & Custody Banks",
+      "founded": "1985",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "C",
+      "name": "Citigroup",
+      "cik": 831001,
+      "sector": "Financials",
+      "sub_industry": "Diversified Banks",
+      "founded": "1998",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "CB",
+      "name": "Chubb Limited",
+      "cik": 896159,
+      "sector": "Financials",
+      "sub_industry": "Property & Casualty Insurance",
+      "founded": "1985",
+      "hq": "Zurich, Switzerland"
+    },
+    {
+      "ticker": "CBOE",
+      "name": "Cboe Global Markets",
+      "cik": 1374310,
+      "sector": "Financials",
+      "sub_industry": "Financial Exchanges & Data",
+      "founded": "1973",
+      "hq": "Chicago, Illinois"
+    },
+    {
+      "ticker": "CDNS",
+      "name": "Cadence Design Systems",
+      "cik": 813672,
+      "sector": "Information Technology",
+      "sub_industry": "Application Software",
+      "founded": "1988",
+      "hq": "San Jose, California"
+    },
+    {
+      "ticker": "CDW",
+      "name": "CDW Corporation",
+      "cik": 1402057,
+      "sector": "Information Technology",
+      "sub_industry": "Technology Distributors",
+      "founded": "1984",
+      "hq": "Vernon Hills, Illinois"
+    },
+    {
+      "ticker": "CFG",
+      "name": "Citizens Financial Group",
+      "cik": 759944,
+      "sector": "Financials",
+      "sub_industry": "Regional Banks",
+      "founded": "1828",
+      "hq": "Providence, Rhode Island"
+    },
+    {
+      "ticker": "CHTR",
+      "name": "Charter Communications",
+      "cik": 1091667,
+      "sector": "Communication Services",
+      "sub_industry": "Cable & Satellite",
+      "founded": "1993",
+      "hq": "Stamford, Connecticut"
+    },
+    {
+      "ticker": "CIEN",
+      "name": "Ciena",
+      "cik": 936395,
+      "sector": "Information Technology",
+      "sub_industry": "Communications Equipment",
+      "founded": "1992",
+      "hq": "Hanover, Maryland"
+    },
+    {
+      "ticker": "CINF",
+      "name": "Cincinnati Financial",
+      "cik": 20286,
+      "sector": "Financials",
+      "sub_industry": "Property & Casualty Insurance",
+      "founded": "1950",
+      "hq": "Fairfield, Ohio"
+    },
+    {
+      "ticker": "CMCSA",
+      "name": "Comcast",
+      "cik": 1166691,
+      "sector": "Communication Services",
+      "sub_industry": "Cable & Satellite",
+      "founded": "1963",
+      "hq": "Philadelphia, Pennsylvania"
+    },
+    {
+      "ticker": "CME",
+      "name": "CME Group",
+      "cik": 1156375,
+      "sector": "Financials",
+      "sub_industry": "Financial Exchanges & Data",
+      "founded": "1848",
+      "hq": "Chicago, Illinois"
+    },
+    {
+      "ticker": "COF",
+      "name": "Capital One",
+      "cik": 927628,
+      "sector": "Financials",
+      "sub_industry": "Consumer Finance",
+      "founded": "1994",
+      "hq": "Tysons Corner, Virginia"
+    },
+    {
+      "ticker": "COHR",
+      "name": "Coherent Corp.",
+      "cik": 820318,
+      "sector": "Information Technology",
+      "sub_industry": "Electronic Components",
+      "founded": "1971",
+      "hq": "Saxonburg, Pennsylvania"
+    },
+    {
+      "ticker": "COIN",
+      "name": "Coinbase",
+      "cik": 1679788,
+      "sector": "Financials",
+      "sub_industry": "Financial Exchanges & Data",
+      "founded": "2012",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "CPAY",
+      "name": "Corpay",
+      "cik": 1175454,
+      "sector": "Financials",
+      "sub_industry": "Transaction & Payment Processing Services",
+      "founded": "2000",
+      "hq": "Atlanta, Georgia"
+    },
+    {
+      "ticker": "CRM",
+      "name": "Salesforce",
+      "cik": 1108524,
+      "sector": "Information Technology",
+      "sub_industry": "Application Software",
+      "founded": "1999",
+      "hq": "San Francisco, California"
+    },
+    {
+      "ticker": "CRWD",
+      "name": "CrowdStrike",
+      "cik": 1535527,
+      "sector": "Information Technology",
+      "sub_industry": "Systems Software",
+      "founded": "2011",
+      "hq": "Austin, Texas"
+    },
+    {
+      "ticker": "CSCO",
+      "name": "Cisco",
+      "cik": 858877,
+      "sector": "Information Technology",
+      "sub_industry": "Communications Equipment",
+      "founded": "1984",
+      "hq": "San Jose, California"
+    },
+    {
+      "ticker": "CTSH",
+      "name": "Cognizant",
+      "cik": 1058290,
+      "sector": "Information Technology",
+      "sub_industry": "IT Consulting & Other Services",
+      "founded": "1994",
+      "hq": "Teaneck, New Jersey"
+    },
+    {
+      "ticker": "DDOG",
+      "name": "Datadog",
+      "cik": 1561550,
+      "sector": "Information Technology",
+      "sub_industry": "Application Software",
+      "founded": "2010",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "DELL",
+      "name": "Dell Technologies",
+      "cik": 1571996,
+      "sector": "Information Technology",
+      "sub_industry": "Technology Hardware, Storage & Peripherals",
+      "founded": "2016",
+      "hq": "Round Rock, Texas"
+    },
+    {
+      "ticker": "DIS",
+      "name": "Walt Disney Company (The)",
+      "cik": 1744489,
+      "sector": "Communication Services",
+      "sub_industry": "Movies & Entertainment",
+      "founded": "1923",
+      "hq": "Burbank, California"
+    },
+    {
+      "ticker": "EA",
+      "name": "Electronic Arts",
+      "cik": 712515,
+      "sector": "Communication Services",
+      "sub_industry": "Interactive Home Entertainment",
+      "founded": "1982",
+      "hq": "Redwood City, California"
+    },
+    {
+      "ticker": "ECHO",
+      "name": "EchoStar",
+      "cik": 1415404,
+      "sector": "Communication Services",
+      "sub_industry": "Wireless Telecommunication Services",
+      "founded": "2008",
+      "hq": "Englewood, Colorado"
+    },
+    {
+      "ticker": "EG",
+      "name": "Everest Group",
+      "cik": 1095073,
+      "sector": "Financials",
+      "sub_industry": "Reinsurance",
+      "founded": "1973",
+      "hq": "Hamilton, Bermuda"
+    },
+    {
+      "ticker": "ERIE",
+      "name": "Erie Indemnity",
+      "cik": 922621,
+      "sector": "Financials",
+      "sub_industry": "Insurance Brokers",
+      "founded": "1925",
+      "hq": "Erie, Pennsylvania"
+    },
+    {
+      "ticker": "FDS",
+      "name": "FactSet",
+      "cik": 1013237,
+      "sector": "Financials",
+      "sub_industry": "Financial Exchanges & Data",
+      "founded": "1978",
+      "hq": "Norwalk, Connecticut"
+    },
+    {
+      "ticker": "FFIV",
+      "name": "F5, Inc.",
+      "cik": 1048695,
+      "sector": "Information Technology",
+      "sub_industry": "Communications Equipment",
+      "founded": "1996",
+      "hq": "Seattle, Washington"
+    },
+    {
+      "ticker": "FICO",
+      "name": "Fair Isaac",
+      "cik": 814547,
+      "sector": "Information Technology",
+      "sub_industry": "Application Software",
+      "founded": "1956",
+      "hq": "Bozeman, Montana"
+    },
+    {
+      "ticker": "FIS",
+      "name": "Fidelity National Information Services",
+      "cik": 1136893,
+      "sector": "Financials",
+      "sub_industry": "Transaction & Payment Processing Services",
+      "founded": "1968",
+      "hq": "Jacksonville, Florida"
+    },
+    {
+      "ticker": "FISV",
+      "name": "Fiserv",
+      "cik": 798354,
+      "sector": "Financials",
+      "sub_industry": "Transaction & Payment Processing Services",
+      "founded": "1984",
+      "hq": "Brookfield, Wisconsin"
+    },
+    {
+      "ticker": "FITB",
+      "name": "Fifth Third Bancorp",
+      "cik": 35527,
+      "sector": "Financials",
+      "sub_industry": "Regional Banks",
+      "founded": "1858",
+      "hq": "Cincinnati, Ohio"
+    },
+    {
+      "ticker": "FLEX",
+      "name": "Flex Ltd.",
+      "cik": 866374,
+      "sector": "Information Technology",
+      "sub_industry": "Electronic Manufacturing Services",
+      "founded": "1969",
+      "hq": "Austin, Texas"
+    },
+    {
+      "ticker": "FOX",
+      "name": "Fox Corporation (Class B)",
+      "cik": 1754301,
+      "sector": "Communication Services",
+      "sub_industry": "Broadcasting",
+      "founded": "2019",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "FOXA",
+      "name": "Fox Corporation (Class A)",
+      "cik": 1754301,
+      "sector": "Communication Services",
+      "sub_industry": "Broadcasting",
+      "founded": "2019",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "FSLR",
+      "name": "First Solar",
+      "cik": 1274494,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductors",
+      "founded": "1999",
+      "hq": "Tempe, Arizona"
+    },
+    {
+      "ticker": "FTNT",
+      "name": "Fortinet",
+      "cik": 1262039,
+      "sector": "Information Technology",
+      "sub_industry": "Systems Software",
+      "founded": "2000",
+      "hq": "Sunnyvale, California"
+    },
+    {
+      "ticker": "GDDY",
+      "name": "GoDaddy",
+      "cik": 1609711,
+      "sector": "Information Technology",
+      "sub_industry": "Internet Services & Infrastructure",
+      "founded": "1997",
+      "hq": "Tempe, Arizona"
+    },
+    {
+      "ticker": "GEN",
+      "name": "Gen Digital",
+      "cik": 849399,
+      "sector": "Information Technology",
+      "sub_industry": "Systems Software",
+      "founded": "1982",
+      "hq": "Tempe, Arizona"
+    },
+    {
+      "ticker": "GL",
+      "name": "Globe Life",
+      "cik": 320335,
+      "sector": "Financials",
+      "sub_industry": "Life & Health Insurance",
+      "founded": "1900",
+      "hq": "McKinney, Texas"
+    },
+    {
+      "ticker": "GLW",
+      "name": "Corning Inc.",
+      "cik": 24741,
+      "sector": "Information Technology",
+      "sub_industry": "Electronic Components",
+      "founded": "1851",
+      "hq": "Corning, New York"
+    },
+    {
+      "ticker": "GOOG",
+      "name": "Alphabet Inc. (Class C)",
+      "cik": 1652044,
+      "sector": "Communication Services",
+      "sub_industry": "Interactive Media & Services",
+      "founded": "1998",
+      "hq": "Mountain View, California"
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet Inc. (Class A)",
+      "cik": 1652044,
+      "sector": "Communication Services",
+      "sub_industry": "Interactive Media & Services",
+      "founded": "1998",
+      "hq": "Mountain View, California"
+    },
+    {
+      "ticker": "GPN",
+      "name": "Global Payments",
+      "cik": 1123360,
+      "sector": "Financials",
+      "sub_industry": "Transaction & Payment Processing Services",
+      "founded": "2000",
+      "hq": "Atlanta, Georgia"
+    },
+    {
+      "ticker": "GS",
+      "name": "Goldman Sachs",
+      "cik": 886982,
+      "sector": "Financials",
+      "sub_industry": "Investment Banking & Brokerage",
+      "founded": "1869",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "HBAN",
+      "name": "Huntington Bancshares",
+      "cik": 49196,
+      "sector": "Financials",
+      "sub_industry": "Regional Banks",
+      "founded": "1866",
+      "hq": "Columbus, Ohio; Detroit, Michigan"
+    },
+    {
+      "ticker": "HIG",
+      "name": "Hartford (The)",
+      "cik": 874766,
+      "sector": "Financials",
+      "sub_industry": "Property & Casualty Insurance",
+      "founded": "1810",
+      "hq": "Hartford, Connecticut"
+    },
+    {
+      "ticker": "HOOD",
+      "name": "Robinhood Markets",
+      "cik": 1783879,
+      "sector": "Financials",
+      "sub_industry": "Investment Banking & Brokerage",
+      "founded": "2013",
+      "hq": "Menlo Park, California"
+    },
+    {
+      "ticker": "HPE",
+      "name": "Hewlett Packard Enterprise",
+      "cik": 1645590,
+      "sector": "Information Technology",
+      "sub_industry": "Technology Hardware, Storage & Peripherals",
+      "founded": "2015",
+      "hq": "Houston, Texas"
+    },
+    {
+      "ticker": "HPQ",
+      "name": "HP Inc.",
+      "cik": 47217,
+      "sector": "Information Technology",
+      "sub_industry": "Technology Hardware, Storage & Peripherals",
+      "founded": "1939 (2015)",
+      "hq": "Palo Alto, California"
+    },
+    {
+      "ticker": "IBKR",
+      "name": "Interactive Brokers",
+      "cik": 1381197,
+      "sector": "Financials",
+      "sub_industry": "Investment Banking & Brokerage",
+      "founded": "1977",
+      "hq": "Greenwich, Connecticut"
+    },
+    {
+      "ticker": "IBM",
+      "name": "IBM",
+      "cik": 51143,
+      "sector": "Information Technology",
+      "sub_industry": "IT Consulting & Other Services",
+      "founded": "1911",
+      "hq": "Armonk, New York"
+    },
+    {
+      "ticker": "ICE",
+      "name": "Intercontinental Exchange",
+      "cik": 1571949,
+      "sector": "Financials",
+      "sub_industry": "Financial Exchanges & Data",
+      "founded": "2000",
+      "hq": "Atlanta, Georgia"
+    },
+    {
+      "ticker": "INTC",
+      "name": "Intel",
+      "cik": 50863,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductors",
+      "founded": "1968",
+      "hq": "Santa Clara, California"
+    },
+    {
+      "ticker": "INTU",
+      "name": "Intuit",
+      "cik": 896878,
+      "sector": "Information Technology",
+      "sub_industry": "Application Software",
+      "founded": "1983",
+      "hq": "Mountain View, California"
+    },
+    {
+      "ticker": "IT",
+      "name": "Gartner",
+      "cik": 749251,
+      "sector": "Information Technology",
+      "sub_industry": "IT Consulting & Other Services",
+      "founded": "1979",
+      "hq": "Stamford, Connecticut"
+    },
+    {
+      "ticker": "IVZ",
+      "name": "Invesco",
+      "cik": 914208,
+      "sector": "Financials",
+      "sub_industry": "Asset Management & Custody Banks",
+      "founded": "1935",
+      "hq": "Atlanta, Georgia"
+    },
+    {
+      "ticker": "JBL",
+      "name": "Jabil",
+      "cik": 898293,
+      "sector": "Information Technology",
+      "sub_industry": "Electronic Manufacturing Services",
+      "founded": "1966",
+      "hq": "St. Petersburg, Florida"
+    },
+    {
+      "ticker": "JKHY",
+      "name": "Jack Henry & Associates",
+      "cik": 779152,
+      "sector": "Financials",
+      "sub_industry": "Transaction & Payment Processing Services",
+      "founded": "1976",
+      "hq": "Monett, Missouri"
+    },
+    {
+      "ticker": "JPM",
+      "name": "JPMorgan Chase",
+      "cik": 19617,
+      "sector": "Financials",
+      "sub_industry": "Diversified Banks",
+      "founded": "2000 (1799 / 1871)",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "KEY",
+      "name": "KeyCorp",
+      "cik": 91576,
+      "sector": "Financials",
+      "sub_industry": "Regional Banks",
+      "founded": "1825",
+      "hq": "Cleveland, Ohio"
+    },
+    {
+      "ticker": "KEYS",
+      "name": "Keysight Technologies",
+      "cik": 1601046,
+      "sector": "Information Technology",
+      "sub_industry": "Electronic Equipment & Instruments",
+      "founded": "2014 (1939)",
+      "hq": "Santa Rosa, California"
+    },
+    {
+      "ticker": "KKR",
+      "name": "KKR & Co.",
+      "cik": 1404912,
+      "sector": "Financials",
+      "sub_industry": "Asset Management & Custody Banks",
+      "founded": "1976",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "KLAC",
+      "name": "KLA Corporation",
+      "cik": 319201,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductor Materials & Equipment",
+      "founded": "1975/1977 (1997)",
+      "hq": "Milpitas, California"
+    },
+    {
+      "ticker": "L",
+      "name": "Loews Corporation",
+      "cik": 60086,
+      "sector": "Financials",
+      "sub_industry": "Multi-line Insurance",
+      "founded": "1959",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "LITE",
+      "name": "Lumentum",
+      "cik": 1633978,
+      "sector": "Information Technology",
+      "sub_industry": "Communications Equipment",
+      "founded": "2015",
+      "hq": "San Jose, California"
+    },
+    {
+      "ticker": "LRCX",
+      "name": "Lam Research",
+      "cik": 707549,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductor Materials & Equipment",
+      "founded": "1980",
+      "hq": "Fremont, California"
+    },
+    {
+      "ticker": "LYV",
+      "name": "Live Nation Entertainment",
+      "cik": 1335258,
+      "sector": "Communication Services",
+      "sub_industry": "Movies & Entertainment",
+      "founded": "2010",
+      "hq": "Beverly Hills, California"
+    },
+    {
+      "ticker": "MA",
+      "name": "Mastercard",
+      "cik": 1141391,
+      "sector": "Financials",
+      "sub_industry": "Transaction & Payment Processing Services",
+      "founded": "1966",
+      "hq": "Harrison, New York"
+    },
+    {
+      "ticker": "MCHP",
+      "name": "Microchip Technology",
+      "cik": 827054,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductors",
+      "founded": "1989",
+      "hq": "Chandler, Arizona"
+    },
+    {
+      "ticker": "MCO",
+      "name": "Moody's Corporation",
+      "cik": 1059556,
+      "sector": "Financials",
+      "sub_industry": "Financial Exchanges & Data",
+      "founded": "1909",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "MET",
+      "name": "MetLife",
+      "cik": 1099219,
+      "sector": "Financials",
+      "sub_industry": "Life & Health Insurance",
+      "founded": "1868",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "META",
+      "name": "Meta Platforms",
+      "cik": 1326801,
+      "sector": "Communication Services",
+      "sub_industry": "Interactive Media & Services",
+      "founded": "2004",
+      "hq": "Menlo Park, California"
+    },
+    {
+      "ticker": "MPWR",
+      "name": "Monolithic Power Systems",
+      "cik": 1280452,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductors",
+      "founded": "1997",
+      "hq": "Kirkland, Washington"
+    },
+    {
+      "ticker": "MRSH",
+      "name": "Marsh McLennan",
+      "cik": 62709,
+      "sector": "Financials",
+      "sub_industry": "Insurance Brokers",
+      "founded": "1905",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "MRVL",
+      "name": "Marvell Technology",
+      "cik": 1835632,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductors",
+      "founded": "1995",
+      "hq": "Santa Clara, California"
+    },
+    {
+      "ticker": "MS",
+      "name": "Morgan Stanley",
+      "cik": 895421,
+      "sector": "Financials",
+      "sub_industry": "Investment Banking & Brokerage",
+      "founded": "1935",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "MSCI",
+      "name": "MSCI Inc.",
+      "cik": 1408198,
+      "sector": "Financials",
+      "sub_industry": "Financial Exchanges & Data",
+      "founded": "1969",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "cik": 789019,
+      "sector": "Information Technology",
+      "sub_industry": "Systems Software",
+      "founded": "1975",
+      "hq": "Redmond, Washington"
+    },
+    {
+      "ticker": "MSI",
+      "name": "Motorola Solutions",
+      "cik": 68505,
+      "sector": "Information Technology",
+      "sub_industry": "Communications Equipment",
+      "founded": "1928 (2011)",
+      "hq": "Chicago, Illinois"
+    },
+    {
+      "ticker": "MTB",
+      "name": "M&T Bank",
+      "cik": 36270,
+      "sector": "Financials",
+      "sub_industry": "Regional Banks",
+      "founded": "1856",
+      "hq": "Buffalo, New York"
+    },
+    {
+      "ticker": "MU",
+      "name": "Micron Technology",
+      "cik": 723125,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductors",
+      "founded": "1978",
+      "hq": "Boise, Idaho"
+    },
+    {
+      "ticker": "NDAQ",
+      "name": "Nasdaq, Inc.",
+      "cik": 1120193,
+      "sector": "Financials",
+      "sub_industry": "Financial Exchanges & Data",
+      "founded": "1971",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "NFLX",
+      "name": "Netflix",
+      "cik": 1065280,
+      "sector": "Communication Services",
+      "sub_industry": "Movies & Entertainment",
+      "founded": "1997",
+      "hq": "Los Gatos, California"
+    },
+    {
+      "ticker": "NOW",
+      "name": "ServiceNow",
+      "cik": 1373715,
+      "sector": "Information Technology",
+      "sub_industry": "Systems Software",
+      "founded": "2003",
+      "hq": "Santa Clara, California"
+    },
+    {
+      "ticker": "NTAP",
+      "name": "NetApp",
+      "cik": 1002047,
+      "sector": "Information Technology",
+      "sub_industry": "Technology Hardware, Storage & Peripherals",
+      "founded": "1992",
+      "hq": "San Jose, California"
+    },
+    {
+      "ticker": "NTRS",
+      "name": "Northern Trust",
+      "cik": 73124,
+      "sector": "Financials",
+      "sub_industry": "Asset Management & Custody Banks",
+      "founded": "1889",
+      "hq": "Chicago, Illinois"
+    },
+    {
+      "ticker": "NVDA",
+      "name": "Nvidia",
+      "cik": 1045810,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductors",
+      "founded": "1993",
+      "hq": "Santa Clara, California"
+    },
+    {
+      "ticker": "NWS",
+      "name": "News Corp (Class B)",
+      "cik": 1564708,
+      "sector": "Communication Services",
+      "sub_industry": "Publishing",
+      "founded": "2013 (News Corporation 1980)",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "NWSA",
+      "name": "News Corp (Class A)",
+      "cik": 1564708,
+      "sector": "Communication Services",
+      "sub_industry": "Publishing",
+      "founded": "2013 (News Corporation 1980)",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "NXPI",
+      "name": "NXP Semiconductors",
+      "cik": 1413447,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductors",
+      "founded": "1953",
+      "hq": "Eindhoven, Netherlands"
+    },
+    {
+      "ticker": "OMC",
+      "name": "Omnicom Group",
+      "cik": 29989,
+      "sector": "Communication Services",
+      "sub_industry": "Advertising",
+      "founded": "1986",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "ON",
+      "name": "ON Semiconductor",
+      "cik": 1097864,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductors",
+      "founded": "1999",
+      "hq": "Phoenix, Arizona"
+    },
+    {
+      "ticker": "ORCL",
+      "name": "Oracle Corporation",
+      "cik": 1341439,
+      "sector": "Information Technology",
+      "sub_industry": "Application Software",
+      "founded": "1977",
+      "hq": "Austin, Texas"
+    },
+    {
+      "ticker": "PANW",
+      "name": "Palo Alto Networks",
+      "cik": 1327567,
+      "sector": "Information Technology",
+      "sub_industry": "Systems Software",
+      "founded": "2005",
+      "hq": "Santa Clara, California"
+    },
+    {
+      "ticker": "PFG",
+      "name": "Principal Financial Group",
+      "cik": 1126328,
+      "sector": "Financials",
+      "sub_industry": "Life & Health Insurance",
+      "founded": "1879",
+      "hq": "Des Moines, Iowa"
+    },
+    {
+      "ticker": "PGR",
+      "name": "Progressive Corporation",
+      "cik": 80661,
+      "sector": "Financials",
+      "sub_industry": "Property & Casualty Insurance",
+      "founded": "1937",
+      "hq": "Mayfield Village, Ohio"
+    },
+    {
+      "ticker": "PLTR",
+      "name": "Palantir Technologies",
+      "cik": 1321655,
+      "sector": "Information Technology",
+      "sub_industry": "Application Software",
+      "founded": "2003",
+      "hq": "Aventura, Florida"
+    },
+    {
+      "ticker": "PNC",
+      "name": "PNC Financial Services",
+      "cik": 713676,
+      "sector": "Financials",
+      "sub_industry": "Diversified Banks",
+      "founded": "1845",
+      "hq": "Pittsburgh, Pennsylvania"
+    },
+    {
+      "ticker": "PRU",
+      "name": "Prudential Financial",
+      "cik": 1137774,
+      "sector": "Financials",
+      "sub_industry": "Life & Health Insurance",
+      "founded": "1875",
+      "hq": "Newark, New Jersey"
+    },
+    {
+      "ticker": "PSKY",
+      "name": "Paramount Skydance Corporation",
+      "cik": 2041610,
+      "sector": "Communication Services",
+      "sub_industry": "Movies & Entertainment",
+      "founded": "2025 (Paramount Pictures 1912)",
+      "hq": "Los Angeles, California"
+    },
+    {
+      "ticker": "PTC",
+      "name": "PTC Inc.",
+      "cik": 857005,
+      "sector": "Information Technology",
+      "sub_industry": "Application Software",
+      "founded": "1985",
+      "hq": "Boston, Massachusetts"
+    },
+    {
+      "ticker": "PYPL",
+      "name": "PayPal",
+      "cik": 1633917,
+      "sector": "Financials",
+      "sub_industry": "Transaction & Payment Processing Services",
+      "founded": "1998",
+      "hq": "San Jose, California"
+    },
+    {
+      "ticker": "Q",
+      "name": "Qnity Electronics",
+      "cik": 2058873,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductor Materials & Equipment",
+      "founded": "2025",
+      "hq": "Wilmington, Delaware"
+    },
+    {
+      "ticker": "QCOM",
+      "name": "Qualcomm",
+      "cik": 804328,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductors",
+      "founded": "1985",
+      "hq": "San Diego, California"
+    },
+    {
+      "ticker": "RF",
+      "name": "Regions Financial Corporation",
+      "cik": 1281761,
+      "sector": "Financials",
+      "sub_industry": "Regional Banks",
+      "founded": "1971",
+      "hq": "Birmingham, Alabama"
+    },
+    {
+      "ticker": "RJF",
+      "name": "Raymond James Financial",
+      "cik": 720005,
+      "sector": "Financials",
+      "sub_industry": "Investment Banking & Brokerage",
+      "founded": "1962",
+      "hq": "St. Petersburg, Florida"
+    },
+    {
+      "ticker": "ROP",
+      "name": "Roper Technologies",
+      "cik": 882835,
+      "sector": "Information Technology",
+      "sub_industry": "Electronic Equipment & Instruments",
+      "founded": "1981",
+      "hq": "Sarasota, Florida"
+    },
+    {
+      "ticker": "SCHW",
+      "name": "Charles Schwab Corporation",
+      "cik": 316709,
+      "sector": "Financials",
+      "sub_industry": "Investment Banking & Brokerage",
+      "founded": "1971",
+      "hq": "Westlake, Texas"
+    },
+    {
+      "ticker": "SMCI",
+      "name": "Supermicro",
+      "cik": 1375365,
+      "sector": "Information Technology",
+      "sub_industry": "Technology Hardware, Storage & Peripherals",
+      "founded": "1993",
+      "hq": "San Jose, California"
+    },
+    {
+      "ticker": "SNDK",
+      "name": "Sandisk",
+      "cik": 2023554,
+      "sector": "Information Technology",
+      "sub_industry": "Technology Hardware, Storage & Peripherals",
+      "founded": "1988",
+      "hq": "Milpitas, California"
+    },
+    {
+      "ticker": "SNPS",
+      "name": "Synopsys",
+      "cik": 883241,
+      "sector": "Information Technology",
+      "sub_industry": "Application Software",
+      "founded": "1986",
+      "hq": "Sunnyvale, California"
+    },
+    {
+      "ticker": "SPGI",
+      "name": "S&P Global",
+      "cik": 64040,
+      "sector": "Financials",
+      "sub_industry": "Financial Exchanges & Data",
+      "founded": "1917",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "STT",
+      "name": "State Street Corporation",
+      "cik": 93751,
+      "sector": "Financials",
+      "sub_industry": "Asset Management & Custody Banks",
+      "founded": "1792",
+      "hq": "Boston, Massachusetts"
+    },
+    {
+      "ticker": "STX",
+      "name": "Seagate Technology",
+      "cik": 1137789,
+      "sector": "Information Technology",
+      "sub_industry": "Technology Hardware, Storage & Peripherals",
+      "founded": "1979",
+      "hq": "Dublin, Ireland"
+    },
+    {
+      "ticker": "SWKS",
+      "name": "Skyworks Solutions",
+      "cik": 4127,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductors",
+      "founded": "2002",
+      "hq": "Irvine, California"
+    },
+    {
+      "ticker": "SYF",
+      "name": "Synchrony Financial",
+      "cik": 1601712,
+      "sector": "Financials",
+      "sub_industry": "Consumer Finance",
+      "founded": "2003",
+      "hq": "Stamford, Connecticut"
+    },
+    {
+      "ticker": "T",
+      "name": "AT&T",
+      "cik": 732717,
+      "sector": "Communication Services",
+      "sub_industry": "Integrated Telecommunication Services",
+      "founded": "1983 (1885)",
+      "hq": "Dallas, Texas"
+    },
+    {
+      "ticker": "TDY",
+      "name": "Teledyne Technologies",
+      "cik": 1094285,
+      "sector": "Information Technology",
+      "sub_industry": "Electronic Equipment & Instruments",
+      "founded": "1960",
+      "hq": "Thousand Oaks, California"
+    },
+    {
+      "ticker": "TEL",
+      "name": "TE Connectivity",
+      "cik": 1385157,
+      "sector": "Information Technology",
+      "sub_industry": "Electronic Manufacturing Services",
+      "founded": "2007",
+      "hq": "Galway, Ireland"
+    },
+    {
+      "ticker": "TER",
+      "name": "Teradyne",
+      "cik": 97210,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductor Materials & Equipment",
+      "founded": "1960",
+      "hq": "North Reading, Massachusetts"
+    },
+    {
+      "ticker": "TFC",
+      "name": "Truist Financial",
+      "cik": 92230,
+      "sector": "Financials",
+      "sub_industry": "Diversified Banks",
+      "founded": "1872",
+      "hq": "Charlotte, North Carolina"
+    },
+    {
+      "ticker": "TKO",
+      "name": "TKO Group Holdings",
+      "cik": 1973266,
+      "sector": "Communication Services",
+      "sub_industry": "Movies & Entertainment",
+      "founded": "2023",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "TMUS",
+      "name": "T-Mobile US",
+      "cik": 1283699,
+      "sector": "Communication Services",
+      "sub_industry": "Wireless Telecommunication Services",
+      "founded": "1994",
+      "hq": "Bellevue, Washington"
+    },
+    {
+      "ticker": "TRMB",
+      "name": "Trimble Inc.",
+      "cik": 864749,
+      "sector": "Information Technology",
+      "sub_industry": "Application Software",
+      "founded": "1978",
+      "hq": "Westminster, Colorado"
+    },
+    {
+      "ticker": "TROW",
+      "name": "T. Rowe Price",
+      "cik": 1113169,
+      "sector": "Financials",
+      "sub_industry": "Asset Management & Custody Banks",
+      "founded": "1937",
+      "hq": "Baltimore, Maryland"
+    },
+    {
+      "ticker": "TRV",
+      "name": "Travelers Companies (The)",
+      "cik": 86312,
+      "sector": "Financials",
+      "sub_industry": "Property & Casualty Insurance",
+      "founded": "1853",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "TTD",
+      "name": "Trade Desk (The)",
+      "cik": 1671933,
+      "sector": "Communication Services",
+      "sub_industry": "Advertising",
+      "founded": "2009",
+      "hq": "Ventura, California"
+    },
+    {
+      "ticker": "TTWO",
+      "name": "Take-Two Interactive",
+      "cik": 946581,
+      "sector": "Communication Services",
+      "sub_industry": "Interactive Home Entertainment",
+      "founded": "1993",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "TXN",
+      "name": "Texas Instruments",
+      "cik": 97476,
+      "sector": "Information Technology",
+      "sub_industry": "Semiconductors",
+      "founded": "1930",
+      "hq": "Dallas, Texas"
+    },
+    {
+      "ticker": "TYL",
+      "name": "Tyler Technologies",
+      "cik": 860731,
+      "sector": "Information Technology",
+      "sub_industry": "Application Software",
+      "founded": "1966",
+      "hq": "Plano, Texas"
+    },
+    {
+      "ticker": "USB",
+      "name": "U.S. Bancorp",
+      "cik": 36104,
+      "sector": "Financials",
+      "sub_industry": "Diversified Banks",
+      "founded": "1968",
+      "hq": "Minneapolis, Minnesota"
+    },
+    {
+      "ticker": "V",
+      "name": "Visa Inc.",
+      "cik": 1403161,
+      "sector": "Financials",
+      "sub_industry": "Transaction & Payment Processing Services",
+      "founded": "1958",
+      "hq": "San Francisco, California"
+    },
+    {
+      "ticker": "VRSN",
+      "name": "Verisign",
+      "cik": 1014473,
+      "sector": "Information Technology",
+      "sub_industry": "Internet Services & Infrastructure",
+      "founded": "1995",
+      "hq": "Reston, Virginia"
+    },
+    {
+      "ticker": "VZ",
+      "name": "Verizon",
+      "cik": 732712,
+      "sector": "Communication Services",
+      "sub_industry": "Integrated Telecommunication Services",
+      "founded": "1983 (1877)",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "WBD",
+      "name": "Warner Bros. Discovery",
+      "cik": 1437107,
+      "sector": "Communication Services",
+      "sub_industry": "Broadcasting",
+      "founded": "2022 (Warner Bros. 1923)",
+      "hq": "New York City, New York"
+    },
+    {
+      "ticker": "WDAY",
+      "name": "Workday, Inc.",
+      "cik": 1327811,
+      "sector": "Information Technology",
+      "sub_industry": "Application Software",
+      "founded": "2005",
+      "hq": "Pleasanton, California"
+    },
+    {
+      "ticker": "WDC",
+      "name": "Western Digital",
+      "cik": 106040,
+      "sector": "Information Technology",
+      "sub_industry": "Technology Hardware, Storage & Peripherals",
+      "founded": "1970",
+      "hq": "San Jose, California"
+    },
+    {
+      "ticker": "WFC",
+      "name": "Wells Fargo",
+      "cik": 72971,
+      "sector": "Financials",
+      "sub_industry": "Diversified Banks",
+      "founded": "1852",
+      "hq": "San Francisco, California"
+    },
+    {
+      "ticker": "WRB",
+      "name": "W. R. Berkley Corporation",
+      "cik": 11544,
+      "sector": "Financials",
+      "sub_industry": "Property & Casualty Insurance",
+      "founded": "1967",
+      "hq": "Greenwich, Connecticut"
+    },
+    {
+      "ticker": "WTW",
+      "name": "Willis Towers Watson",
+      "cik": 1140536,
+      "sector": "Financials",
+      "sub_industry": "Insurance Brokers",
+      "founded": "2016",
+      "hq": "London, United Kingdom"
+    },
+    {
+      "ticker": "XYZ",
+      "name": "Block, Inc.",
+      "cik": 1512673,
+      "sector": "Financials",
+      "sub_industry": "Transaction & Payment Processing Services",
+      "founded": "2009",
+      "hq": "none"
+    },
+    {
+      "ticker": "ZBRA",
+      "name": "Zebra Technologies",
+      "cik": 877212,
+      "sector": "Information Technology",
+      "sub_industry": "Electronic Equipment & Instruments",
+      "founded": "1969",
+      "hq": "Lincolnshire, Illinois"
+    }
+  ]
+}

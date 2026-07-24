@@ -6,12 +6,14 @@ Inputs:
   data/raw/wikidata_companies.json
   data/raw/wikidata_persons.json   (optional — supplements Person nodes)
   data/raw/curated_edges.json
+  data/raw/company_universe.json  (optional — from build_universe.py; adds Sector nodes)
 
 Outputs:
   data/processed/companies.json   Company nodes
   data/processed/persons.json     Person nodes
   data/processed/events.json      Event nodes
-  data/processed/edges.json       All four relationship types
+  data/processed/sectors.json     Sector nodes (GICS sector + sub-industry)
+  data/processed/edges.json       Five relationship types incl. BELONGS_TO
 """
 
 import json
@@ -159,6 +161,52 @@ def build_events(curated: dict) -> tuple[list[dict], set[str]]:
 
 
 # ---------------------------------------------------------------------------
+# Sectors (scaling workstream 1.2)
+# ---------------------------------------------------------------------------
+
+def build_sectors(universe: dict | None, known_tickers: set[str]) -> tuple[list[dict], list[dict]]:
+    """
+    Build Sector nodes + BELONGS_TO edges from data/raw/company_universe.json
+    (built by build_universe.py). GICS Sector -> Sector{level: "sector"},
+    GICS Sub-Industry -> Sector{level: "sub_sector", parent_name: sector}.
+    Every company in the universe gets a BELONGS_TO edge to its sub-sector.
+
+    Optional: if company_universe.json doesn't exist yet (pre-1.1 pipelines),
+    returns empty lists rather than failing — Sector is additive, not required.
+    """
+    if not universe:
+        print("  Sectors: 0 (company_universe.json not found — run build_universe.py first)")
+        return [], []
+
+    sectors: dict[str, dict] = {}
+    belongs_to = []
+    skipped = 0
+
+    for c in universe.get("companies", []):
+        ticker = c.get("ticker")
+        sector = c.get("sector")
+        sub = c.get("sub_industry")
+        if ticker not in known_tickers:
+            # Universe may include companies not yet pulled into Company nodes
+            # (e.g. wikidata_client.py hasn't been pointed at the full universe
+            # yet) — skip rather than create a dangling BELONGS_TO target.
+            skipped += 1
+            continue
+        if not sector or not sub:
+            continue
+
+        sectors.setdefault(sector, {"name": sector, "level": "sector", "parent_name": None})
+        sectors.setdefault(sub, {"name": sub, "level": "sub_sector", "parent_name": sector})
+
+        belongs_to.append({"company_ticker": ticker, "sector_name": sub})
+
+    print(f"  Sectors: {len(sectors)} nodes ({sum(1 for s in sectors.values() if s['level']=='sector')} sector / "
+          f"{sum(1 for s in sectors.values() if s['level']=='sub_sector')} sub_sector)")
+    print(f"  BELONGS_TO: {len(belongs_to)} edges ({skipped} companies skipped — not in known Company set)")
+    return list(sectors.values()), belongs_to
+
+
+# ---------------------------------------------------------------------------
 # Edges
 # ---------------------------------------------------------------------------
 
@@ -281,6 +329,9 @@ def main() -> None:
     if not persons_raw:
         print("  wikidata_persons.json not found — Person nodes from curated data only")
 
+    universe_path = RAW / "company_universe.json"
+    universe = json.loads(universe_path.read_text()) if universe_path.exists() else None
+
     PROC.mkdir(parents=True, exist_ok=True)
 
     print("\nBuilding Company nodes …")
@@ -293,21 +344,27 @@ def main() -> None:
     exec_edges = curated.get("executive_of", [])
     persons, known_persons = build_persons(persons_raw, exec_edges, known_tickers)
 
+    print("\nBuilding Sector nodes …")
+    sectors, belongs_to = build_sectors(universe, known_tickers)
+
     print("\nBuilding edges …")
     edges = build_edges(curated, known_tickers, known_persons, known_events)
+    edges["belongs_to"] = belongs_to
 
     print("\nWriting processed files …")
     (PROC / "companies.json").write_text(json.dumps({"companies": companies}, indent=2))
     (PROC / "persons.json").write_text(json.dumps({"persons": persons}, indent=2))
     (PROC / "events.json").write_text(json.dumps({"events": events}, indent=2))
+    (PROC / "sectors.json").write_text(json.dumps({"sectors": sectors}, indent=2))
     (PROC / "edges.json").write_text(json.dumps(edges, indent=2))
 
     print(f"\nDone. Processed files written to {PROC}/")
     print(f"  companies.json  — {len(companies)} nodes")
     print(f"  persons.json    — {len(persons)} nodes")
     print(f"  events.json     — {len(events)} nodes")
+    print(f"  sectors.json    — {len(sectors)} nodes")
     print(f"  edges.json      — "
-          f"{sum(len(v) for v in edges.values())} edges across 4 relationship types")
+          f"{sum(len(v) for v in edges.values())} edges across {len(edges)} relationship types")
 
 
 if __name__ == "__main__":
